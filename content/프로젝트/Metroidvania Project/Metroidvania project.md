@@ -23,10 +23,17 @@
 사다리 근처에서 위아래 방향키를 입력했을 경우 
 - `onLadder = true`
 
-
-
 점프 또는 끝까지 
 - `onLadder = false`
+
+## 피격
+### 장애물
+- [[Layer]]: Obstacle
+- [`OnTriggerEnter2D()`](OnTriggerEnter2D)
+	- `if (!isHurting && hit.gameObject.layer == "")`
+- Exit Time이 문제가 되는가?
+
+
 
 앉기 도대체 어떻게???
 
