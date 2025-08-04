@@ -1,5 +1,5 @@
-깃허브 링크: https://github.com/hiro-jeon/Metroidvania-Scripts
-개인 독스: [[Unity]]
+- 깃허브 링크: https://github.com/hiro-jeon/Metroidvania-Scripts
+- 개인 독스: [[Unity]]
 ## [[250804(월)]]
 [[애니메이션]]
 - `Animator.SetFloat()`
