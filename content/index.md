@@ -6,6 +6,7 @@
 - [[Quartz]]
 - [[Notion]]
 - [[Obsidian]]
+- [[Vim]]
 - 색상
 
 

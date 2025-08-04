@@ -2,3 +2,5 @@
 ```csharp
 gameObject.SetActive(false);
 ```
+
+[[애니메이션]]
