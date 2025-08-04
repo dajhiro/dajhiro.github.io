@@ -1,20 +1,15 @@
 깃허브 링크: https://github.com/hiro-jeon/Metroidvania-Scripts
-## 초기 세팅
-### 패키지
-**Universal 2D(Universal Render Pipeline)**
-```markdown
-Universal 2D
-+ 2D 라이트
-	+ Shader
-+ Input System
-```
+## [[250804(월)]]
+[[애니메이션]]
+- `Animator.SetFloat()`
 
-### 키워드
-- `[Serializefield]`
-	- 간단함: 그냥 `private`를 inspector 창에 띄우는 것
-
- ---
+---
 ## [[250803(일)]]: 이거까지는 (오늘 내로) 만들 수 있어야함
+## 초기 세팅
+- 패키지
+- [[URP 2D]]
+- [[Unity 키워드]]
+
 ## 플레이어 
 ### 플레이어 오브젝트(시작)
 - `Player`: `GameObject`
@@ -83,6 +78,13 @@ A가 이동 + 공격
 
 
 뭔가 이동 방향들을 정해보자
+
+[[애니메이션 방법론]]
+상태 머신
+StateMachine
+- 전환: Transition
+
+---
 ## 애니메이션 목록
 - 정지
 	- ⇒ 낙하
@@ -103,16 +105,14 @@ A가 이동 + 공격
 - 점프
 - 낙하
 - 공격
-- Trigger
-	- 대시
-	- 대시공격
-	- 피격
-	- 사망
-	- 슬라이딩 
-- Bool
-	- 사다리 타기 
-	- 앉기
-	- 벽 슬라이딩
+- 대시
+- 대시공격
+- 피격
+- 사망
+- 슬라이딩 
+- 사다리 타기 
+- 앉기
+- 벽 슬라이딩
 
 
 ---

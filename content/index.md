@@ -6,6 +6,7 @@
 - [[Quartz]]
 - [[Notion]]
 - [[Obsidian]]
+- 색상
 
 
 집주인님 와이파이 빌려야겠음
