@@ -2,11 +2,12 @@
 - 개인 독스: [[Unity]]
 ## [[250805(화)]]
 
-### 사다리 타기
-진입/탈출 조건
+## 사다리 타기: 진입/탈출/타는 중
+애니메이션: [[사다리 타기]]
+
 ### 진입: `isOnLadder = true`
 사다리 근처에서 위(`Up`) 방향키를 입력했을 경우
-사다리 근처: [`OnTriggerStay2D()`](OnTriggerStay2D)
+- [`OnTriggerStay2D()`](OnTriggerStay2D): 사다리 근처에 도달
 ```csharp
 // 사다리 레이어 확인 후
 if (!isOnLadder && moveInput.y > 0) // 위 방향키 입력
@@ -15,25 +16,40 @@ if (!isOnLadder && moveInput.y > 0) // 위 방향키 입력
 }
 ```
 
+- [ ] 사다리 맨 위에서 타고 내려오는 경우????? 이거 어떻게 하지
+### 탈출: `onLadder = false`
+점프/피격/사망 또는 [`OnTriggerExit2D()`](OnTriggerExit.md)
 
-탈출: 점프/피격/사망 또는 [`OnTriggerExit2D()`](OnTriggerExit.md)
-- `onLadder = false`
-
-[`OnTriggerExit2D()`](OnTriggerExit.md)
+- [`OnTriggerExit2D()`](OnTriggerExit.md): 사다리 끝
 ```csharp
 isOnLadder = false;
+animator.SetTrigger("LadderExit");
 ```
 
-`Update()`
+- `Update()`: 점프/피격/사망
 ```csharp
 if (isOnLadder)
 {
-	if (isHurting || isDeath || jumpPreseed)
+	if (isHurting || isDead || jumpPreseed)
 	{
 		isOnLadder = false;
+		if (jumpPressed)
+		{
+			
+		}
 	}
 }
 ```
+
+사다리 점프값 따로... 
+
+근데
+
+
+### 타는 중: 
+- 중력값 0
+- 공격/
+
 
 ## [[250804(월)]]
 - `Animator.SetFloat()`
