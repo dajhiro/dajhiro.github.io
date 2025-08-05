@@ -5,16 +5,18 @@
 ## 버그
 - [ ] 그리드가 안 보임
 - [ ] 벽에 붙는 거
-- [ ] Transform 오프셋 위치 콜라이더랑 떨어짐
-	- [x] 스프라이트 피봇 위치 수정: Buttom ⇒ Custom
-		- [ ] 기존: (0.42, 0)
-		- [ ] 사다리: (0.47, 0)
-	- [x] 사다리만 또 따로 피봇 위치 수정
-	- [ ] 자꾸 좌우로 조금씩 틀어짐
-		- [ ] isOnLadder 후 위치 바꾸기 전에 속도 0으로 고정: 실패
-		- [ ] Collider가 사다리 안으로만 들어오게 피봇 위치 미세조정
-			- [ ] ⇒ (0.474, 0)
-	- [ ] 
+- [x] Transform 오프셋 위치 콜라이더랑 떨어짐
+	- 스프라이트 피봇 위치 수정: Buttom ⇒ Custom
+		- `(0.42, 0)`
+		- 사다리: `(0.47, 0)`
+			- 사다리만 또 따로 피봇 위치 수정
+- [x] 사다리: 자꾸 좌우로 조금씩 틀어짐
+	- isOnLadder 후 위치 바꾸기 전에 속도 0으로 고정: 실패
+	- Collider가 사다리 안으로만 들어오게 피봇 위치 미세조정
+		- ⇒ `(0.474, 0)`
+- [ ] 사다리를 쳐 못탐(닿은 위치가 애매해서)
+	- [ ] 애매한 위치 제거해버리기(타일 있는지 확인)
+	- [ ] `tilemap.HasTile(cellPosition) => OK`
 
 ## 사다리 타기: 진입/탈출/타는 중
 애니메이션: [[사다리 타기]]
@@ -27,7 +29,7 @@
 ###  활성화
 - 콜라이더 무시: `CapsuleCollider2D` 비활성화
 - 사다리 안에서만 움직일 수 있음(FixedUpdate 비활성화)
-플레이어 위치(x값)를 사다리로 옮기기
+- 플레이어 위치(x값)를 사다리로 옮기기
 ```csharp
 Vector3 contactPoint = col.ClosestPoint(transform.position);
 Vector3Int cellPos = tilemap.WorldToCell(contactPoint);  // 셀 위치(index)로 전환
