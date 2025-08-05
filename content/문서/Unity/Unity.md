@@ -6,7 +6,9 @@ gameObject.SetActive(false);
 ## [[애니메이션]]
 
 ## 함수
-- [[OnTriggerEnter2D]]
+[[Trigger]]
+- [`OnTriggerEnter2D()`](OnTriggerEnter2D)
+- [`OnTriggerStay2D()`](OnTriggerStay2D)
 
 
 ## 클래스

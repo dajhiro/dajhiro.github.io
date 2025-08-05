@@ -1,5 +1,40 @@
 - 깃허브 링크: https://github.com/hiro-jeon/Metroidvania-Scripts
 - 개인 독스: [[Unity]]
+## [[250805(화)]]
+
+### 사다리 타기
+진입/탈출 조건
+### 진입: `isOnLadder = true`
+사다리 근처에서 위(`Up`) 방향키를 입력했을 경우
+사다리 근처: [`OnTriggerStay2D()`](OnTriggerStay2D)
+```csharp
+// 사다리 레이어 확인 후
+if (!isOnLadder && moveInput.y > 0) // 위 방향키 입력
+{
+	isOnLadder = true;
+}
+```
+
+
+탈출: 점프/피격/사망 또는 [`OnTriggerExit2D()`](OnTriggerExit.md)
+- `onLadder = false`
+
+[`OnTriggerExit2D()`](OnTriggerExit.md)
+```csharp
+isOnLadder = false;
+```
+
+`Update()`
+```csharp
+if (isOnLadder)
+{
+	if (isHurting || isDeath || jumpPreseed)
+	{
+		isOnLadder = false;
+	}
+}
+```
+
 ## [[250804(월)]]
 - `Animator.SetFloat()`
 
@@ -18,13 +53,6 @@
 	- [ ] 슬라이딩 ⇒ 앉기는 포기
 - [ ] [[사다리 타기]]
 - [ ] 벽 슬라이딩
-
-## 사다리 타기
-사다리 근처에서 위아래 방향키를 입력했을 경우 
-- `onLadder = true`
-
-점프 또는 끝까지 
-- `onLadder = false`
 
 ## 피격
 ### 장애물
@@ -120,70 +148,9 @@ A가 이동 + 공격
 그리고 공격 조건이 없어서 문제네
 - run, idle 에서만 공격 가능
 
-
 뭔가 이동 방향들을 정해보자
 
-[[애니메이션 방법론]]
-상태 머신
-StateMachine
-- 전환: Transition
-
-4. 대시, 대시 공격
-
 ---
-## 애니메이션 목록
-- 정지
-	- ⇒ 낙하
-	- ⇔ 걷기
-	- ⇒ 점프
-	- ⇒ 공격
-	- ⇒ 사다리 타기
-	- ⇒ 앉기
-	- X
-		- 벽 슬라이딩
-	- ⇒ 사망
-		- 이건 어디서든지 가능
-	- ⇒ 피격
-
-
-모션
-- 정지
-- 걷기
-- 점프
-- 낙하
-- 공격
-- 대시
-- 대시공격
-- 피격
-- 사망
-- 슬라이딩 
-- 사다리 타기 
-- 앉기
-- 벽 슬라이딩
-
-
----
-## 완료
-- [x] 1
-	- 정지
-	- 걷기
-- [x] 2
-	- 점프
-	- 낙하
-- [x] 3
-	- 공격
-
-## 아직
-- Trigger
-	- 대시
-	- 대시공격
-	- 피격
-	- 사망
-	- 슬라이딩 
-- Bool
-	- 사다리 타기 
-	- 앉기
-	- 벽 슬라이딩
 
 앉기 시작/종료 애니메이션이랑 앉는 중 애니메이션이랑 분리해야하나?
 루프랑 트랜지션 설정하고
