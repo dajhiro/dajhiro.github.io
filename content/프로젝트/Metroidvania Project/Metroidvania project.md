@@ -17,49 +17,17 @@
 		- Ground와 벽(Wall)은 별개로 관리해야지
 		- 추후 ㄱㄱ
 
-### 버그 해결
-- 해결: Gravity가 돌아오지 않는다
-- 해결: Transform 오프셋 위치 콜라이더랑 떨어짐
-	- 스프라이트 피봇 위치 수정: Buttom ⇒ Custom
-		- `(0.42, 0)`
-		- 사다리: `(0.47, 0)`
-			- 사다리만 또 따로 피봇 위치 수정
-	- 사다리: 자꾸 좌우로 조금씩 틀어짐
-		- isOnLadder 후 위치 바꾸기 전에 속도 0으로 고정: 실패
-		- Collider가 사다리 안으로만 들어오게 피봇 위치 미세조정
-			- ⇒ 사다리: `(0.474, 0)`
-- 해결: 사다리를 쳐 못탐(닿은 위치가 애매해서)
-	- 애매한 위치 제거해버리기(타일 있는지 확인)
-	- `tilemap.HasTile(cellPosition) => OK`
-		- 타일맵: Ladder가 맞고
-			- Ladder에서 쳐 찍은 타일인데
-			- 왜 없다고 하는겨 정신 나갔나
-			- ⇐ 계속 충돌 지점(테두리)를 리턴해서 그랬다
-		- 그렇다면 ClosedPoint가 아니고
-			- Transform의 위치를 기준으로 하자
-			- 그리고 손은 위에 달렸으니까
-				- 위쪽을 기준으로 하면 되겠다
-				- 오프셋을 위쪽으로 ㄱㄱ
-			- 오 콜라이더 기준으로 가능
-				- 콜라이더의 맨 끝점 ㄱㄱ
-					- `col.bounds.max.y`
-		- 오 최고의 방법 찾음: [`Collider.Distance()`](Collider2D.Distance.md)
-			- 겹치는 두 점의 가운뎃값을 구할 수 있다
-			- 그 점의 위치에 타일이 존재하는지 체크해서
-
+- [x] [[트러블슈팅]]: Transform 콜라이더랑 안 맞음  
+- [x] [[트러블슈팅]]: 사다리 타기
 ## 사다리 타기: 진입/탈출/타는 중
 애니메이션: [[사다리 타기]]
-
-### 버그
-
 
 ## 진입: `isOnLadder = true`
 ###  활성화
 - 콜라이더 무시: `CapsuleCollider2D` 비활성화
-
 - 사다리 안에서만 움직일 수 있음(FixedUpdate 비활성화)
+- 플레이어 위치(x값)를 사다리로 옮기기
 
-플레이어 위치(x값)를 사다리로 옮기기
 ```csharp
 using UnityEngine.Tilemaps;
 
@@ -85,7 +53,6 @@ animator.SetBool("IsOnLadder", true); // 애니메이션
 
 ```
 
-
 ### 조건
 사다리 근처에서 위(`Up`) 방향키를 입력했을 경우
 - [`OnTriggerStay2D()`](OnTriggerStay2D): 사다리 근처에 도달
@@ -99,10 +66,28 @@ if (!isOnLadder && moveInput.y > 0) // 위 방향키 입력
 
 
 사다리 위에서 아래(`Down`) 방향키를 입력했을 경우
+- [`Update()`](Update): 레이캐스트 상태 확인
+	- [`Physics2D.Raycast()`](Physics2D.Raycast)
+
+```csharp
+// 레이캐스트 확인 후
+isLadder = Physics2D.Raycast(groundCheck.position, Vector2.down, groundCheckDistance, ladderLayer);
+
+public void Update()
+{
+	if (!isOnLadder && !isLadder && moveInput.y < 0)
+	{
+		// 콜라이더 통과 => 자동 진입
+		Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("Player"), LayerMask.NameToLayer("Ground"), true);
+	}
+}
+```
+
 - [x] 사다리 맨 위에서 타고 내려오는 경우????? 이거 어떻게 하지
 	- [x] 사다리 맨 위 인식 어떻게?
 	- [x] 아 ! 바닥에 있으면 레이캐스팅 해서 쏘면 되지
 	- [x] Update()로 일단 탐지
+
 ## 탈출: `onLadder = false`
 점프/피격/사망 또는 [`OnTriggerExit2D()`](OnTriggerExit.md)
 
