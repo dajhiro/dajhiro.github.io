@@ -1,4 +1,5 @@
 - [[Obsidian]]
+- [공식 홈페이지](https://quartz.jzhao.xyz/)
 ## 거지같은거
 - 제목 없애버리고 싶은데 못한다는거
 	- 뭔 Title보다 H1이 더 크냐? 장난함?

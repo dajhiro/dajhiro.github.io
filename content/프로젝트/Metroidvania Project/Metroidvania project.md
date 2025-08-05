@@ -2,56 +2,86 @@
 - 개인 독스: [[Unity]]
 ## [[250805(화)]]
 
-## 버그
+## [[버그]]
 ### 미해결
 - [ ] 그리드가 안 보임
 - [ ] 벽에 붙는 거
 
+하자
+- 지형지물을 통과하려면?
+	- 사다리를 타고 있을 때에는 레이어 충돌을 없애고
+	- 사다리에서 벗어날 때만
+		- OnTriggerEnter2D
+	- 흠 점프를 하면 끼어버리네
+	- 그렇다면 그라운드를 다시 수정해야겠다.
+		- Ground와 벽(Wall)은 별개로 관리해야지
+		- 추후 ㄱㄱ
+
 ### 버그 해결
-- Transform 오프셋 위치 콜라이더랑 떨어짐
+- 해결: Gravity가 돌아오지 않는다
+- 해결: Transform 오프셋 위치 콜라이더랑 떨어짐
 	- 스프라이트 피봇 위치 수정: Buttom ⇒ Custom
 		- `(0.42, 0)`
 		- 사다리: `(0.47, 0)`
 			- 사다리만 또 따로 피봇 위치 수정
-- 사다리: 자꾸 좌우로 조금씩 틀어짐
-	- isOnLadder 후 위치 바꾸기 전에 속도 0으로 고정: 실패
-	- Collider가 사다리 안으로만 들어오게 피봇 위치 미세조정
-		- ⇒ `(0.474, 0)`
-- [ ] 사다리를 쳐 못탐(닿은 위치가 애매해서)
+	- 사다리: 자꾸 좌우로 조금씩 틀어짐
+		- isOnLadder 후 위치 바꾸기 전에 속도 0으로 고정: 실패
+		- Collider가 사다리 안으로만 들어오게 피봇 위치 미세조정
+			- ⇒ 사다리: `(0.474, 0)`
+- 해결: 사다리를 쳐 못탐(닿은 위치가 애매해서)
 	- 애매한 위치 제거해버리기(타일 있는지 확인)
 	- `tilemap.HasTile(cellPosition) => OK`
 		- 타일맵: Ladder가 맞고
 			- Ladder에서 쳐 찍은 타일인데
 			- 왜 없다고 하는겨 정신 나갔나
-		- 계속 충돌 지점(테두리)를 리턴해서 그랬다
-		- 그렇다면
-	- ClosedPoint가 아니고
-		- Transform의 위치를 기준으로 하자
-		- 그리고 손은 위에 달렸으니까
-			- 위쪽을 기준으로 하면 되겠다
-			- 오프셋을 위쪽으로 ㄱㄱ
-		- 오 콜라이더 기준으로 가능
-			- 콜라이더의 맨 끝점 ㄱㄱ
-				- `col.bounds.max.y`
+			- ⇐ 계속 충돌 지점(테두리)를 리턴해서 그랬다
+		- 그렇다면 ClosedPoint가 아니고
+			- Transform의 위치를 기준으로 하자
+			- 그리고 손은 위에 달렸으니까
+				- 위쪽을 기준으로 하면 되겠다
+				- 오프셋을 위쪽으로 ㄱㄱ
+			- 오 콜라이더 기준으로 가능
+				- 콜라이더의 맨 끝점 ㄱㄱ
+					- `col.bounds.max.y`
+		- 오 최고의 방법 찾음: [`Collider.Distance()`](Collider2D.Distance.md)
+			- 겹치는 두 점의 가운뎃값을 구할 수 있다
+			- 그 점의 위치에 타일이 존재하는지 체크해서
 
 ## 사다리 타기: 진입/탈출/타는 중
 애니메이션: [[사다리 타기]]
 
 ### 버그
-- [x] Gravity가 돌아오지 않는다
 
 
 ## 진입: `isOnLadder = true`
 ###  활성화
 - 콜라이더 무시: `CapsuleCollider2D` 비활성화
-- 사다리 안에서만 움직일 수 있음(FixedUpdate 비활성화)
-- 플레이어 위치(x값)를 사다리로 옮기기
-```csharp
-Vector3 contactPoint = col.ClosestPoint(transform.position);
-Vector3Int cellPos = tilemap.WorldToCell(contactPoint);  // 셀 위치(index)로 전환
-Vector3 tileWorldPos = tilemap.GetCellCenterWorld(cellPos); // 셀의 world position으로 전환
 
+- 사다리 안에서만 움직일 수 있음(FixedUpdate 비활성화)
+
+플레이어 위치(x값)를 사다리로 옮기기
+```csharp
 using UnityEngine.Tilemaps;
+
+Tilemap tilemap = ladder.GetComponent<Tilemap>();
+
+var dist = standingCollider.Distance(ladder);
+
+// 사다리 위치에 고정시키기 위한 것들
+if (!dist.isOverlapped)
+	return ;
+Vector2 contact = (dist.pointA + dist.pointB) * 0.5f; 
+Vector3Int tilePos = tilemap.WorldToCell(contact); // Position => Grid
+if (tilemap.HasTile(tilePos) == false)
+	return ;
+
+Vector3 ladderPos = tilemap.GetCellCenterWorld(tilePos);
+
+isOnLadder = true;
+rb.linearVelocity = Vector2.zero; 
+transform.position = new Vector3(ladderPos.x, transform.position.y, 0); 
+animator.SetBool("IsOnLadder", true); // 애니메이션
+
 
 ```
 

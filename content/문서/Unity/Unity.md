@@ -17,6 +17,7 @@ gameObject.SetActive(false);
 - `NameToLayer("Name")`
 
 ### `Collider2D`
+- [`Collider2D.Distance()`](Collider2D.Distance)
 - `gameObject`
 
 ### `gameObject`
