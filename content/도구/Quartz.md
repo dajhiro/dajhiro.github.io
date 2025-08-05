@@ -28,9 +28,15 @@ ChatGPT 따라하다가 시간 다버림
  `vi .github/workflows/deploy.yml`
 
 ## ColorScheme
+Gold
 - secondary: `#edbb00`
 - territory: `#ffcc11`
 
+```ts
+// 
+#a0d08b
+#c5e4a8
+```
 
 ```ts
 // quartz.config.ts
@@ -70,8 +76,8 @@ const config: QuartzConfig = {
           gray: "#b8b8b8",
           darkgray: "#4e4e4e",
           dark: "#2b2b2b",
-          secondary: "#edbb00",
-          tertiary: "#ffcc11",
+          secondary: "#a0d08b",
+          tertiary: "#c5e4a8",
           highlight: "rgba(143, 159, 169, 0.15)",
           textHighlight: "#fff23688",
         },
@@ -81,8 +87,8 @@ const config: QuartzConfig = {
           gray: "#646464",
           darkgray: "#d4d4d4",
           dark: "#ebebec",
-          secondary: "#edbb00",
-          tertiary: "#ffcc11",
+          secondary: "#a0d08b",
+          tertiary: "#c5e4a8",
           highlight: "rgba(143, 159, 169, 0.15)",
           textHighlight: "#b3aa0288",
         },
