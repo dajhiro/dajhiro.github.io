@@ -2,10 +2,36 @@
 - 개인 독스: [[Unity]]
 ## [[250805(화)]]
 
+## 버그
+그리드가 안 보임
+벽에 붙는 거
+- [ ] Transform 오프셋 위치 콜라이더랑 떨어짐
+	- [x] 피봇 위치 수정
+	- [x] 사다리만 또 따로 피봇 위치 수정
+
 ## 사다리 타기: 진입/탈출/타는 중
 애니메이션: [[사다리 타기]]
 
-### 진입: `isOnLadder = true`
+### 버그
+- Gravity가 돌아오지 않는다
+
+
+## 진입: `isOnLadder = true`
+###  활성화
+- 콜라이더 무시: `CapsuleCollider2D` 비활성화
+- 사다리 안에서만 움직일 수 있음(FixedUpdate 비활성화)
+플레이어 위치(x값)를 사다리로 옮기기
+```csharp
+Vector3 contactPoint = col.ClosestPoint(transform.position);
+Vector3Int cellPos = tilemap.WorldToCell(contactPoint);  // 셀 위치(index)로 전환
+Vector3 tileWorldPos = tilemap.GetCellCenterWorld(cellPos); // 셀의 world position으로 전환
+
+using UnityEngine.Tilemaps;
+
+```
+
+
+### 조건
 사다리 근처에서 위(`Up`) 방향키를 입력했을 경우
 - [`OnTriggerStay2D()`](OnTriggerStay2D): 사다리 근처에 도달
 ```csharp
@@ -16,8 +42,13 @@ if (!isOnLadder && moveInput.y > 0) // 위 방향키 입력
 }
 ```
 
-- [ ] 사다리 맨 위에서 타고 내려오는 경우????? 이거 어떻게 하지
-### 탈출: `onLadder = false`
+
+사다리 위에서 아래(`Down`) 방향키를 입력했을 경우
+- [x] 사다리 맨 위에서 타고 내려오는 경우????? 이거 어떻게 하지
+	- [x] 사다리 맨 위 인식 어떻게?
+	- [x] 아 ! 바닥에 있으면 레이캐스팅 해서 쏘면 되지
+	- [x] Update()로 일단 탐지
+## 탈출: `onLadder = false`
 점프/피격/사망 또는 [`OnTriggerExit2D()`](OnTriggerExit.md)
 
 - [`OnTriggerExit2D()`](OnTriggerExit.md): 사다리 끝
