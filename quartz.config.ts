@@ -22,13 +22,10 @@ const config: QuartzConfig = {
     defaultDateType: "modified",
     theme: {
       fontOrigin: "googleFonts",
-	  fonts: {
-		  body: "Gothic A1",
-	  },
       cdnCaching: true,
       typography: {
-        header: "Schibsted Grotesk",
-        body: "Source Sans Pro",
+        header: "Gothic A1",
+        body: "Gothic A1",
         code: "IBM Plex Mono",
       },
       colors: {
