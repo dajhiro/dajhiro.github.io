@@ -5,14 +5,24 @@ gameObject.SetActive(false);
 
 ## [[애니메이션]]
 
-## 함수
+## MonoBehaviour
+Default
+- Start()
+- Awake()
+- OnEnable()
+
+- Update()
+- FixedUpdate
+
 [[Trigger]]
 - [`OnTriggerEnter2D()`](OnTriggerEnter2D)
 - [`OnTriggerStay2D()`](OnTriggerStay2D)
 
+Collider
+- `OnColliderEnter2D()`
+
 
 ## 클래스
-
 ### `LayerMask`
 - `NameToLayer("Name")`
 

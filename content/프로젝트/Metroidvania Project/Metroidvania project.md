@@ -1,11 +1,43 @@
 - 깃허브 링크: https://github.com/hiro-jeon/Metroidvania-Scripts
 - 개인 독스: [[Unity]]
-## [[250805(화)]]
 
-## [[버그]]
-### 미해결
-- [ ] 그리드가 안 보임
-- [ ] 벽에 붙는 거
+## [[250806(수)]]
+## 적
+### EnemyObject
+- Rigidbody2D
+- Box Collider
+
+Wander
+
+Multiple Sprite인데 피봇을 모두 Center Buttom으로 하고 싶어
+그런데 일일이 하나씩 해야하나?
+ㄴㄴ SpriteEditor로 하나만 선택해서
+Slice로 하면 됨
+
+떨어지지 않게
+
+### 플레이어 감지(시야)
+- `OnTriggerStay2D()`
+	- `isChasing == false`
+	- `StartCoroutine()`
+		- `chasingTime` 동안만
+
+플레이어 닿음(플레이어 Hurt)
+- OnCollisionEnter2D()
+
+
+질문
+- 데미지를 입는 쪽에서 OnCollision을 할까 
+- 데미지를 주는 쪽에서 할까
+=> 데미지를 입는 쪽
+
+---
+## [[250805(화)]]
+사다리 타기
+
+### [[버그]]
+### 해결
+- [x] 그리드가 안 보임
 
 하자
 - 지형지물을 통과하려면?
@@ -39,7 +71,7 @@
 - [x] [[앉기]]: Ctrl
 	- [ ] 슬라이딩 ⇒ 앉기는 포기
 - [x] [[사다리 타기]]
-	- [ ] 사다리에서 점프 포기
+	- [ ] 사다리에서 점프 시 끼이는 버그: 추후 Wall/Ground 레이어를 분리하여 구현
 - [ ] [[벽 슬라이딩]]
 
 ## 피격
