@@ -5,7 +5,9 @@
 
 ---
 ## [[250807(목)]]
+각 적마다 동일한 Controller를 만들고 Overiding 하자
 
+---
 - [[250806(수)]]: 적(Rat) 기본 완성
 	- 버그: Tilemap 위에서 `linearVelocity.x = 1`인데도 움직이지 않음
 ## [[Enemy]]
