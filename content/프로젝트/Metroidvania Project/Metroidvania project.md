@@ -16,33 +16,24 @@
 ## 할일
 
 ## 기능 추가/변경
-- [x] Enemy: `isHurting`일 시 움직임 멈춤, 하지만 무적은 해제, [[250807(목)]], 17:03
+- [ ] UI: 적 HP 바 만들기
+- [ ] Attack 2단 공격 만들기
+- [ ] 플레이어 스탯 만들기
+- [x] Enemy: `isFreezed`일 시 움직임 멈춤, 하지만 무적은 해제, [[250807(목)]], 17:03
 	- [x] 코루틴 제어로 변경
-- [x] [[카메라]] 움직임: `CameraManager.cs`, [[250807(목)]], 16:33
-- [x] isHurting 일때 무적, [[250807(목)]]
-- [ ] Attack 2단을 위해서 애니메이션 자름
+- [x] [[Camera|카메라]] 움직임: `CameraManager.cs`, [[250807(목)]], 16:33
+- [x] isFreezed 일때 무적, [[250807(목)]]
 
-### 적 무적상태 X
-적은 isHurting일때 당연히 무적따위 없고 그리고 처맞는데 기다려주는 것도 없애버릴거다 너네 배려하다가 게임이 삭제될 수가 있어
-- 즉 `TakeDamage()`에서 `isHurting`일때도 때릴 수 있다
-	- `if (!isHurting)` 제거
+### 적 무적상태 없애기
+적은 isFreezed일때 당연히 무적따위 없고 그리고 처맞는데 기다려주는 것도 없애버릴거다 너네 배려하다가 게임이 삭제될 수가 있어
+- 즉 `TakeDamage()`에서 `isFreezed`일때도 때릴 수 있다
+	- `if (!isFreezed)` 제거
 	- `if (isDead)` 추가
 - [[Coroutine|코루틴]]으로 제어하기
 	- 코루틴 중이면: 코루틴 멈추고 새로 갱신
-		- 어쨌든 다음 코루틴에서도 할거니 isHurting은 false가 될거다
+		- 어쨌든 다음 코루틴에서도 할거니 isFreezed은 false가 될거다
 
-### 카메라 플레이어 따라오게
-- 스무스해야함 - `smoothedPosition = Vector3.Lerp(a, b, delta)`
-	- `delta`는 1 미만
-	- 즉 a와 b의 delta 지점의 값을 반환함 (예:`delta = 0.4f` ⇒ `a`, `b`의 `0.4` 지점)
-	- 결국 현재 위치와 플레이어 위치 사이 어딘가를 계속 타겟팅하면서
-	- 서서히 가까워지는 것이도다
-- 최대값
-	- 카메라에 보여지는 건 맵 기준이므로 맵의 최대/최소높이를 변수로 받는다
-	- 그러면 카메라 높이의 절반을 거기서 빼/더하면 카메라의 최대 Y 포지션이 되는 것
-	- 아직 가로는 모르니 세로만... 다음에는 맵 위치(아마 (0,0))와 맵의 가로/세로(`width/height`)를 인자로 받을 것이다
-
-### isHurting 일때 무적
+### isFreezed 일때 무적
 ```markdown
 + public float immortalTime = 1.5f;
 
@@ -54,11 +45,33 @@ private IEnumerator Freezing()
 - freeze 추가
 
 ## 버그 수정
+- [x] Enemy: (2)넉백으로 날라가지 않게: [[250807(목)]], 18:36
 - [x] BoxCollider 크기 수정: 플레이어 뒤에있는 놈까지 맞으니
 - [x] Enemy: 넉백으로 날라가지 않게
 - [x] player-hurt 애니메이션 버그 수정
+
+### 넉백으로 날라가지 않게: [[250807(목)]], 18:36
+왜 날라갔냐면 이동(의도) 방향으로만 Ray를 쏴서 그랬던 것이었다.
+Freezed 상태면 날라가는 방향으로 Ray를 쏴야 하는데
+반대 방향으로 쏘는데 얘가 감지를 하겠음? 바보같았다.
+
+수정 코드
+```csharp
+// FixedUpdate()
+Vector2 rayDirection;
+if (!isFreezed)
+	rayDirection = Vector2.down + direction;
+else
+	rayDirection = Vector2.down + rb.linearVelocity;
+isEdge = !Physics2D.Raycast(transform.position, rayDirection, raycastDist, groundLayer);
+
+```
+
+[[Debug|디버그]]
+- `Debug.DrawRay(origin, lineVector, color)`
+- `[SerializeField]`
 ### player-hurt 애니메이션 버그 수정
-원인: 공격/대시공격은 Hurt 애니메이션을 재생하지 않아서 애니메이션 끝의 `EndHurt()`함수를 작동시키지 않는다. 그래서 `isHurting = false`가 되지않아버린다
+원인: 공격/대시공격은 Hurt 애니메이션을 재생하지 않아서 애니메이션 끝의 `EndHurt()`함수를 작동시키지 않는다. 그래서 `isFreezed = false`가 되지않아버린다
 ```markdown
 - EndHurt()
 + IEnumerator Freezing()
@@ -118,10 +131,10 @@ contactFilter.useTriggers = true;
 ## [[Enemy]]: OK
 ### 안됨
 TakeDamage: 기능
-- [ ] 뒤로 밀려난다: 이거 작동 안함
-	- [ ] isEdge는 뒤로 밀려나면서도 항상 작동해야해
-	- [ ] 일단 지금은 Move() 때문에 아예 안됨
-	- [ ] 밥먹고나서 ㄱㄱ
+- [x] 뒤로 밀려난다: 이거 작동 안함
+	- [x] isEdge는 뒤로 밀려나면서도 항상 작동해야해
+	- [x] 일단 지금은 Move() 때문에 아예 안됨
+	- [x] 밥먹고나서 ㄱㄱ
 
 ---
 적 스탯을 만들고
@@ -138,7 +151,7 @@ Enemy.cs <!-- 목표 -->
 - 변수
 	- `int hp`
 	- `int damagedForce`
-	- `bool isHurting`
+	- `bool isFreezed`
 - 기능
 	- [ ] 뒤로 밀려난다: 이거 작동 안함
 	- 중복으로 안맞게 상태를 설정한다: `맞고 있음 = true`
@@ -150,9 +163,9 @@ Enemy.cs <!-- 목표 -->
 		- 데미지 애니메이션 이후는 `OnDamageEnd()`
 - `OnAnimationEnd()`
 	- `OnDamageEnd()`
-		- `isHurting` 상태 해제
+		- `isFreezed` 상태 해제
 	- `OnDeadEnd()`
-		- `isHurting` 상태 해제
+		- `isFreezed` 상태 해제
 		- deactive 상태로 만든다: 언젠가 쓰겠지
 
 ---
@@ -216,7 +229,7 @@ Enemy.cs
 ### 장애물
 - [[Layer]]: Obstacle
 - [`OnTriggerEnter2D()`](OnTriggerEnter2D)
-	- `if (!isHurting && hit.gameObject.layer == "")`
+	- `if (!isFreezed && hit.gameObject.layer == "")`
 - Exit Time이 문제가 되는가?
 
 
