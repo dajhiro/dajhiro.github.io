@@ -42,7 +42,6 @@ Collision(충돌: Collider 아님)
 Rigidbody2D
 - `AddForce(Vector2 direction, [ForceMode])`
 
-[[Enemy]]
 
 ---
-- [[애니메이션]]
+- [[Animation]]

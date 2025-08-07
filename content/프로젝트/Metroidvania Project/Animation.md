@@ -1,3 +1,6 @@
+---
+Alias: 애니메이션
+---
 # 유니티 애니메이션 구조
 - Animator
 	- Animation State Machine

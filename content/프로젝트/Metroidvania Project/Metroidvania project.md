@@ -5,15 +5,16 @@
 * CameraManager.cs
 * PlayerMovement.cs
 * Enemy.cs
+
+<!-- GameObject -->
+* Rat
+* Player
 ```
 ---
-## [[250807(목)]]
-- [[Unity]]: `[Attribute]`
-- 질문: 하나의 애니메이터를 다른 적 오브젝트에게도 적용시키고 싶은데 다들 스프라이트가 달라서 들어가는 애니메이션이 달라. 한번에 관리할 수 있는 방법이 없을까? - 해결: Animation Override Controller 라는 게 있군
-- [ ] 질문: Animation Clip에서 Loop time을 끄지 않고 Trigger를 돌리면 영원히?
-	- [ ] 처맞고 버그난 거 이거때문임? 그럴지도 일단 해결
-
+# [[250807(목)]]
 ## 할일
+- [x] `Enemy.TakeDamage()` 만들기
+- [x] `Player.Attack()` 만들기
 
 ## 기능 추가/변경
 - [ ] UI: 적 HP 바 만들기
@@ -130,6 +131,13 @@ Enemy.cs <!-- 목표 -->
 	- `OnDeadEnd()`
 		- `isFreezed` 상태 해제
 		- deactive 상태로 만든다: 언젠가 쓰겠지
+
+## 잡다한 것들
+- [[Unity]]: `[Attribute]`
+- 질문: 하나의 [애니메이터](Animation)를 다른 적 오브젝트에게도 적용시키고 싶은데 다들 스프라이트가 달라서 들어가는 애니메이션이 달라. 한번에 관리할 수 있는 방법이 없을까?
+	- 해결: Animation Override Controller 라는 게 있군
+- 질문: Animation Clip에서 Loop time을 끄지 않고 Trigger를 돌리면 영원히?
+	- 해결: 처맞고 버그난 거 이거때문임? 그럴지도 일단 해결
 
 ---
 ## [[250806(수)]]: [[Enemy]](Rat) 기본 완성

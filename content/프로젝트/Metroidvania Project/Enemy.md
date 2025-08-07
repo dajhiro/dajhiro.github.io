@@ -17,6 +17,10 @@ isEdge = !Physics2D.Raycast(transform.position, rayDirection, raycastDist, groun
 
 ```
 
+[[Debug|디버그]] 함수
+- `Debug.DrawRay(origin, lineVector, color)`
+- `[SerializeField]`
+
 ### 완료: 적 무적상태 없애기, [[250807(목)]]
 `isFreezed`일 시 움직임 멈춤, 하지만 무적은 해제,
 적은 isFreezed일때 당연히 무적따위 없고 그리고 처맞는데 기다려주는 것도 없애버릴거다 너네 배려하다가 게임이 삭제될 수가 있어
