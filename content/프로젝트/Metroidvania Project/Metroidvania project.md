@@ -6,28 +6,37 @@
 ---
 ## [[250807(목)]]
 - [[Unity]]: `[Attribute]`
-- 질문: 하나의 애니메이터를 다른 적 오브젝트에게도 적용시키고 싶은데 다들 스프라이트가 달라서 들어가는 애니메이션이 달라. 한번에 관리할 수 있는 방법이 없을까?
-	- 해결: Animation Override Controller 라는 게 있군
+- 질문: 하나의 애니메이터를 다른 적 오브젝트에게도 적용시키고 싶은데 다들 스프라이트가 달라서 들어가는 애니메이션이 달라. 한번에 관리할 수 있는 방법이 없을까? - 해결: Animation Override Controller 라는 게 있군
 - [ ] 질문: Animation Clip에서 Loop time을 끄지 않고 Trigger를 돌리면 영원히?
-	- [ ] 처맞고 버그난 거 이거때문임?
+	- [ ] 처맞고 버그난 거 이거때문임? 그럴지도 일단 해결
+
+## 기능 추가
+- 카메라 움직임 
+### isHurting 일때 무적
+```markdown
++ public float immortalTime = 1.5f;
+
+private IEnumerator Freezing()
++ Physics2D.IgnoreLayerCollision(true);
++ WaitForSeconds(immortalTime - freezingTime);
++ Physics2D.IgnoreLayerCollision(false);
+```
+- freeze 추가
 
 ## 버그 수정
+- [x] BoxCollider 크기 수정: 플레이어 뒤에있는 놈까지 맞으니
+- [x] Enemy: 넉백으로 날라가지 않게
+- [x] player-hurt 애니메이션 버그 수정
 ### player-hurt 애니메이션 버그 수정
-공격/대시공격은 Hurt 애니메이션을 재생하지 않아서
-애니메이션 끝의 `EndHurt()`함수를 작동시키지 않아서
-`isHurting = false`가 되지않아버린다
+원인: 공격/대시공격은 Hurt 애니메이션을 재생하지 않아서 애니메이션 끝의 `EndHurt()`함수를 작동시키지 않는다. 그래서 `isHurting = false`가 되지않아버린다
 ```markdown
 - EndHurt()
 + IEnumerator Freezing()
 	+ public float freezingTime = 0.5f;
 	+ private Coroutine freezingCoroutine;
 ```
-한편 
 
-## 목표
-이제 공격 구현해야지
-
-## Player
+## Player: Attack()
 이건 코루틴으로 처리: 어차피 그럴 예정이었음
 
 이제 공격 히트판정을 만들자
@@ -39,9 +48,7 @@
 ``` markdown
 PlayerMovement.cs
 <!-- 애니메이션에 삽입 -->
-+ Slash() <!-- 첫 공격 -->
-+ Combo() <!-- 연속 공격 -->
-+ Thrust() <!-- 대시 공격 -->
++ Attack() <!-- 첫 공격 -->
 ```
 
 다 구조는 비슷함 데미지나 이런 것들이 다른 거일뿐.
