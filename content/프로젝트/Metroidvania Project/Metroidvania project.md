@@ -19,53 +19,16 @@
 - [ ] UI: 적 HP 바 만들기
 - [ ] Attack 2단 공격 만들기
 - [ ] 플레이어 스탯 만들기
-- [x] Enemy: `isFreezed`일 시 움직임 멈춤, 하지만 무적은 해제, [[250807(목)]], 17:03
-	- [x] 코루틴 제어로 변경
+- [x] [`Enemy.TakeDamage()`](Enemy): 코루틴으로 관리,  [[250807(목)]], 17:03
 - [x] [[Camera|카메라]] 움직임: `CameraManager.cs`, [[250807(목)]], 16:33
-- [x] isFreezed 일때 무적, [[250807(목)]]
-
-### 적 무적상태 없애기
-적은 isFreezed일때 당연히 무적따위 없고 그리고 처맞는데 기다려주는 것도 없애버릴거다 너네 배려하다가 게임이 삭제될 수가 있어
-- 즉 `TakeDamage()`에서 `isFreezed`일때도 때릴 수 있다
-	- `if (!isFreezed)` 제거
-	- `if (isDead)` 추가
-- [[Coroutine|코루틴]]으로 제어하기
-	- 코루틴 중이면: 코루틴 멈추고 새로 갱신
-		- 어쨌든 다음 코루틴에서도 할거니 isFreezed은 false가 될거다
-
-### isFreezed 일때 무적
-```markdown
-+ public float immortalTime = 1.5f;
-
-private IEnumerator Freezing()
-+ Physics2D.IgnoreLayerCollision(true);
-+ WaitForSeconds(immortalTime - freezingTime);
-+ Physics2D.IgnoreLayerCollision(false);
-```
-- freeze 추가
+- [x] [`Player.OnCollisionEnter2D()`](Player): isFreezed 일때 무적, [[250807(목)]]
 
 ## 버그 수정
-- [x] Enemy: (2)넉백으로 날라가지 않게: [[250807(목)]], 18:36
+- [x] [`Enemy.TakeDamage()`](Enemy): (2)넉백으로 날라가지 않게: [[250807(목)]], 18:36
 - [x] BoxCollider 크기 수정: 플레이어 뒤에있는 놈까지 맞으니
 - [x] Enemy: 넉백으로 날라가지 않게
 - [x] player-hurt 애니메이션 버그 수정
 
-### 넉백으로 날라가지 않게: [[250807(목)]], 18:36
-왜 날라갔냐면 이동(의도) 방향으로만 Ray를 쏴서 그랬던 것이었다.
-Freezed 상태면 날라가는 방향으로 Ray를 쏴야 하는데
-반대 방향으로 쏘는데 얘가 감지를 하겠음? 바보같았다.
-
-수정 코드
-```csharp
-// FixedUpdate()
-Vector2 rayDirection;
-if (!isFreezed)
-	rayDirection = Vector2.down + direction;
-else
-	rayDirection = Vector2.down + rb.linearVelocity;
-isEdge = !Physics2D.Raycast(transform.position, rayDirection, raycastDist, groundLayer);
-
-```
 
 [[Debug|디버그]]
 - `Debug.DrawRay(origin, lineVector, color)`
