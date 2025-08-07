@@ -1,36 +1,14 @@
 - 깃허브 링크: https://github.com/hiro-jeon/Metroidvania-Scripts
-- 개인 독스: [[Unity]]
 
-## [[250806(수)]]
-## 적
-### EnemyObject
-- Rigidbody2D
-- Box Collider
+## 목차
+일자별
 
-Wander
-- Random
+---
+## [[250807(목)]]
 
-Multiple Sprite인데 피봇을 모두 Center Buttom으로 하고 싶어
-그런데 일일이 하나씩 해야하나?
-ㄴㄴ SpriteEditor로 하나만 선택해서
-Slice로 하면 됨
-
-떨어지지 않게
-
-### 플레이어 감지(시야)
-- `OnTriggerStay2D()`
-	- `isChasing == false`
-	- `StartCoroutine()`
-		- `chasingTime` 동안만
-
-플레이어 닿음(플레이어 Hurt)
-- OnCollisionEnter2D()
-
-
-질문
-- 데미지를 입는 쪽에서 OnCollision을 할까 
-- 데미지를 주는 쪽에서 할까
-=> 데미지를 입는 쪽
+- [[250806(수)]]: 적(Rat) 기본 완성
+	- 버그: Tilemap 위에서 `linearVelocity.x = 1`인데도 움직이지 않음
+## [[Enemy]]
 
 ---
 ## [[250805(화)]]
