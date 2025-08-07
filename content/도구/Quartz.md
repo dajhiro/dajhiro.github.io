@@ -13,6 +13,8 @@ li:has(> input[type="checkbox"]:checked) {
   color: white;
 }
 ```
+
+시팔 안되네
 ## 트러블 슈팅
 ### `index.md` 대신에 `Index.md`가 있으면 꼬여버린다(대소문자 구분)
 이거때문에 1시간을 그냥 버림
