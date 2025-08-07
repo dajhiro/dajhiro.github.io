@@ -8,6 +8,7 @@
 - Box Collider
 
 Wander
+- Random
 
 Multiple Sprite인데 피봇을 모두 Center Buttom으로 하고 싶어
 그런데 일일이 하나씩 해야하나?
