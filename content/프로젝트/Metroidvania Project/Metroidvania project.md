@@ -1,9 +1,4 @@
 - 깃허브 링크: https://github.com/hiro-jeon/Metroidvania-Scripts
-
-## 목차
-일자별
-
----
 ## [[250807(목)]]
 - [[Unity]]: `[Attribute]`
 - 질문: 하나의 애니메이터를 다른 적 오브젝트에게도 적용시키고 싶은데 다들 스프라이트가 달라서 들어가는 애니메이션이 달라. 한번에 관리할 수 있는 방법이 없을까? - 해결: Animation Override Controller 라는 게 있군
