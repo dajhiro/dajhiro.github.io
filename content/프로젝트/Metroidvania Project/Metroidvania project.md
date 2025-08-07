@@ -11,10 +11,25 @@
 - [ ] 질문: Animation Clip에서 Loop time을 끄지 않고 Trigger를 돌리면 영원히?
 	- [ ] 처맞고 버그난 거 이거때문임?
 
+## 버그 수정
+### player-hurt 애니메이션 버그 수정
+공격/대시공격은 Hurt 애니메이션을 재생하지 않아서
+애니메이션 끝의 `EndHurt()`함수를 작동시키지 않아서
+`isHurting = false`가 되지않아버린다
+```markdown
+- EndHurt()
++ IEnumerator Freezing()
+	+ public float freezingTime = 0.5f;
+	+ private Coroutine freezingCoroutine;
+```
+한편 
+
 ## 목표
 이제 공격 구현해야지
 
 ## Player
+이건 코루틴으로 처리: 어차피 그럴 예정이었음
+
 이제 공격 히트판정을 만들자
 - 폴리곤 일단 준비: [[Weapon Polygon Collider]]
 - 그런데 걍 일단 박스형으로 하자 ㅋㅋ
