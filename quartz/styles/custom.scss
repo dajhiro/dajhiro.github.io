@@ -3,5 +3,5 @@
 // 체크된 체크박스 있는 리스트 항목 스타일 덮어쓰기
 .page article li:has(> input[type="checkbox"]:checked) {
   text-decoration: none;
-  color: white;
+  color: inherit;
 }
