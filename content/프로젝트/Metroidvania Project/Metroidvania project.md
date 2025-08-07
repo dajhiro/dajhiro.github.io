@@ -16,6 +16,11 @@
 
 ## Player
 이제 공격 히트판정을 만들자
+- 폴리곤 일단 준비: [[Weapon Polygon Collider]]
+- 그런데 걍 일단 박스형으로 하자 ㅋㅋ
+
+![[Pasted image 20250807122345.png]]
+
 ``` markdown
 PlayerMovement.cs
 <!-- 애니메이션에 삽입 -->
@@ -24,12 +29,49 @@ PlayerMovement.cs
 + Thrust() <!-- 대시 공격 -->
 ```
 
-- 폴리곤 일단 준비: [[Weapon Polygon Collider]]
-- 그런데 걍 일단 박스형으로 하자 ㅋㅋ
+다 구조는 비슷함 데미지나 이런 것들이 다른 거일뿐.
+모두 애니메이션 탭에서 액션을 추가해서 사용할 거임.
+BoxCollider2D를 만들어서 disable 상태로 만든 다음에
+변수를 받아서 OverlapCollider를 사용할거임
+레츠꼬
 
-![[Pasted image 20250807122345.png]]
+BoxCollider2D는 변수로 받을때 그냥 Collider2D로 하면 안되나? 나중에 쉽게 바꾸게.
+에이 그냥 나중에 금방 바꾸지뭐
+
+### Variable
+```csharp
+public BoxCollider2D attackCollider;
+	// 추후 변경: 모션마다 콜라이더를 다르게 한다면 사전형 또는 리스트로
+public int damage;
+	// 추후 변경: 일단 동일하게
+public LayerMask enemyLayer;
+
+private ContactFilter2D contactFilter
+```
+
+### `Awake()`
+콘택트 필터 만드는 중임(이거 솔직히 왜 만들어야함?)
+```csharp
+contactFilter = new ContactFilter2D();
+contactFilter.SetLayerMask(enemyLayer);
+contactFilter.useTriggers = true;
+```
+
+### `Attack()`
+몰라 귀찮으니까 일단 이걸로 통일 빠르게 만드는게 더 중요함
+- `attackCollider.Overlap(contactFilter, hits)`
+
+
 
 ## [[Enemy]]: OK
+### 안됨
+TakeDamage: 기능
+- [ ] 뒤로 밀려난다: 이거 작동 안함
+	- [ ] isEdge는 뒤로 밀려나면서도 항상 작동해야해
+	- [ ] 일단 지금은 Move() 때문에 아예 안됨
+	- [ ] 밥먹고나서 ㄱㄱ
+
+---
 적 스탯을 만들고
 데미지를 당했을 때... 어떻게 처리할지
 
@@ -46,12 +88,12 @@ Enemy.cs <!-- 목표 -->
 	- `int damagedForce`
 	- `bool isHurting`
 - 기능
+	- [ ] 뒤로 밀려난다: 이거 작동 안함
 	- 중복으로 안맞게 상태를 설정한다: `맞고 있음 = true`
 	- 체력을 줄인다
 		- `if (hp < 0)` 파괴
 			- 사망 트리거를 올린다
 			- 사망 애니메이션 이후는 `OnDeadEnd()`
-	- 뒤로 밀려난다
 	- 대미지 트리거를 올린다
 		- 데미지 애니메이션 이후는 `OnDamageEnd()`
 - `OnAnimationEnd()`
