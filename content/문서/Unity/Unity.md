@@ -1,17 +1,19 @@
-오브젝트 비활성화
+## 최근
+### GameObject.SetActive 비활성화
 ```csharp
 gameObject.SetActive(false);
 ```
 
-## C\#
+### [[Attribute]]
 `[Attribute]`: Unity
-- `[Header("Title")]`
-- `[Space]`
-- `[Tooltip("at hovering it is shown")`
-- `[Range(min, max)]`
+```csharp
+[Header("Title")]
+[Space]
+[Tooltip("at hovering it is shown")
+[Range(min, max)]
+```
 
-- [[애니메이션]]
-
+---
 ## MonoBehaviour
 ### Method
 Default
@@ -29,10 +31,13 @@ GameObject
 - [`OnTriggerEnter2D()`](OnTriggerEnter2D)
 - [`OnTriggerStay2D()`](OnTriggerStay2D)
 
-Collider
+Collision(충돌: Collider 아님)
 - `OnCollisionEnter2D(Collision2D col)`
 
 Rigidbody2D
 - `AddForce(Vector2 direction, [ForceMode])`
 
 [[Enemy]]
+
+---
+- [[애니메이션]]
