@@ -50,3 +50,4 @@ ChatGPT 따라하다가 시간 다버림
 ---
 참조
 - [[Obsidian]]
+- [[chokidar]]

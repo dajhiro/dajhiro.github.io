@@ -13,6 +13,11 @@ gameObject.SetActive(false);
 [Range(min, max)]
 ```
 
+### [[Coroutine]]
+- `StartCoroutine()`
+	- 비동기적이므로 실행 즉시 다음 코드로 넘어간다
+	- 코루틴을 끝내고 넘길지, 아니면 코루틴을 무시하고 갱신할지는 선택할 수 있음
+
 ---
 ## MonoBehaviour
 ### Method

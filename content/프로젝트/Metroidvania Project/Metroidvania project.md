@@ -1,12 +1,47 @@
 - 깃허브 링크: https://github.com/hiro-jeon/Metroidvania-Scripts
+## 구조
+```markdown
+<!-- Script -->
+* CameraManager.cs
+* PlayerMovement.cs
+* Enemy.cs
+```
+---
 ## [[250807(목)]]
 - [[Unity]]: `[Attribute]`
 - 질문: 하나의 애니메이터를 다른 적 오브젝트에게도 적용시키고 싶은데 다들 스프라이트가 달라서 들어가는 애니메이션이 달라. 한번에 관리할 수 있는 방법이 없을까? - 해결: Animation Override Controller 라는 게 있군
 - [ ] 질문: Animation Clip에서 Loop time을 끄지 않고 Trigger를 돌리면 영원히?
 	- [ ] 처맞고 버그난 거 이거때문임? 그럴지도 일단 해결
 
-## 기능 추가
-- 카메라 움직임 
+## 할일
+
+## 기능 추가/변경
+- [x] Enemy: `isHurting`일 시 움직임 멈춤, 하지만 무적은 해제, [[250807(목)]], 17:03
+	- [x] 코루틴 제어로 변경
+- [x] [[카메라]] 움직임: `CameraManager.cs`, [[250807(목)]], 16:33
+- [x] isHurting 일때 무적, [[250807(목)]]
+- [ ] Attack 2단을 위해서 애니메이션 자름
+
+### 적 무적상태 X
+적은 isHurting일때 당연히 무적따위 없고 그리고 처맞는데 기다려주는 것도 없애버릴거다 너네 배려하다가 게임이 삭제될 수가 있어
+- 즉 `TakeDamage()`에서 `isHurting`일때도 때릴 수 있다
+	- `if (!isHurting)` 제거
+	- `if (isDead)` 추가
+- [[Coroutine|코루틴]]으로 제어하기
+	- 코루틴 중이면: 코루틴 멈추고 새로 갱신
+		- 어쨌든 다음 코루틴에서도 할거니 isHurting은 false가 될거다
+
+### 카메라 플레이어 따라오게
+- 스무스해야함 - `smoothedPosition = Vector3.Lerp(a, b, delta)`
+	- `delta`는 1 미만
+	- 즉 a와 b의 delta 지점의 값을 반환함 (예:`delta = 0.4f` ⇒ `a`, `b`의 `0.4` 지점)
+	- 결국 현재 위치와 플레이어 위치 사이 어딘가를 계속 타겟팅하면서
+	- 서서히 가까워지는 것이도다
+- 최대값
+	- 카메라에 보여지는 건 맵 기준이므로 맵의 최대/최소높이를 변수로 받는다
+	- 그러면 카메라 높이의 절반을 거기서 빼/더하면 카메라의 최대 Y 포지션이 되는 것
+	- 아직 가로는 모르니 세로만... 다음에는 맵 위치(아마 (0,0))와 맵의 가로/세로(`width/height`)를 인자로 받을 것이다
+
 ### isHurting 일때 무적
 ```markdown
 + public float immortalTime = 1.5f;
