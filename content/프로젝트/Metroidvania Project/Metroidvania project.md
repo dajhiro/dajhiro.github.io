@@ -9,10 +9,22 @@
 - 질문: 하나의 애니메이터를 다른 적 오브젝트에게도 적용시키고 싶은데 다들 스프라이트가 달라서 들어가는 애니메이션이 달라. 한번에 관리할 수 있는 방법이 없을까?
 	- 해결: Animation Override Controller 라는 게 있군
 - [ ] 질문: Animation Clip에서 Loop time을 끄지 않고 Trigger를 돌리면 영원히?
-	- [ ] 처맞고 
+	- [ ] 처맞고 버그난 거 이거때문임?
 
 ## 목표
 이제 공격 구현해야지
+
+## Player
+이제 공격 히트판정을 만들자
+```Player.cs
++ 
+```
+
+- 폴리곤 일단 준비: [[Weapon Polygon Collider]]
+- 그런데 걍 일단 박스형으로 하자 ㅋㅋ
+![[Pasted image 20250807122345.png]]
+
+## [[Enemy]]: OK
 적 스탯을 만들고
 데미지를 당했을 때... 어떻게 처리할지
 
@@ -29,7 +41,7 @@ Enemy.cs <!-- 목표 -->
 	- `int damagedForce`
 	- `bool isHurting`
 - 기능
-	- 중복으로 안맞게 상태를 설정한다: 맞고 있음
+	- 중복으로 안맞게 상태를 설정한다: `맞고 있음 = true`
 	- 체력을 줄인다
 		- `if (hp < 0)` 파괴
 			- 사망 트리거를 올린다
@@ -37,13 +49,12 @@ Enemy.cs <!-- 목표 -->
 	- 뒤로 밀려난다
 	- 대미지 트리거를 올린다
 		- 데미지 애니메이션 이후는 `OnDamageEnd()`
-
-### `OnAnimationEnd()`
-- `OnDamageEnd()`
-	- `isHurting` 상태 해제
-- `OnDeadEnd()`
-	- `isHurting` 상태 해제
-	- deactive 상태로 만든다: 언젠가 쓰겠지
+- `OnAnimationEnd()`
+	- `OnDamageEnd()`
+		- `isHurting` 상태 해제
+	- `OnDeadEnd()`
+		- `isHurting` 상태 해제
+		- deactive 상태로 만든다: 언젠가 쓰겠지
 
 ---
 ## [[250806(수)]]: [[Enemy]](Rat) 기본 완성
