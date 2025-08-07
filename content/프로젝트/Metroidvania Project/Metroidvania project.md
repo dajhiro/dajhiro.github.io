@@ -16,12 +16,17 @@
 
 ## Player
 이제 공격 히트판정을 만들자
-```Player.cs
-+ 
+``` markdown
+PlayerMovement.cs
+<!-- 애니메이션에 삽입 -->
++ Slash() <!-- 첫 공격 -->
++ Combo() <!-- 연속 공격 -->
++ Thrust() <!-- 대시 공격 -->
 ```
 
 - 폴리곤 일단 준비: [[Weapon Polygon Collider]]
 - 그런데 걍 일단 박스형으로 하자 ㅋㅋ
+
 ![[Pasted image 20250807122345.png]]
 
 ## [[Enemy]]: OK
