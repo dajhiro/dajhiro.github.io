@@ -1,10 +1,24 @@
 ## 최근
 ## MonoBehaviour
-### 비슷한 메서드들
-Default
-- `Start()`
-- `Awake()`
-- `OnEnable()`
+### 비슷한 메서드들의 차이
+- 시작
+	- `Start()`
+	- `Awake()`
+	- `OnEnable()`
+	- `Reset()`
+- 종료
+	- 
+
+
+- 게임 오브젝트 생성/인스턴스화
+	- 활성화
+	- ⇒ 컴포넌트 활성화: `OnEnable()` 실행
+		- `gameObject.SetActive(true)`
+		- `this.enabled = true`
+- ⇒ 
+
+Awake
+
 
 - `Update()`
 - `FixedUpdate()`
