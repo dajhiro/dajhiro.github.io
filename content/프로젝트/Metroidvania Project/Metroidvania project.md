@@ -27,8 +27,11 @@ PlayerStatus를 GetComponent로 가져와서 사용하는 방향으로 해보자
 그리고 PlayerStatus는 Status: Scriptable Object를 가져오는 방향으로 하자.
 그럼 Status를 수정하는 방식이어야 하는데 가져오는 방법
 
-일단
-어떻게 가져오며
+HP: 
+
+일단 어떻게 가져오며: `public Status status`
+- 에디터에서 가져옴
+
 
 ---
 ## [[250807(목)]]
