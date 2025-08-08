@@ -1,4 +1,14 @@
 ## 최근
+## MonoBehaviour
+### 비슷한 메서드들
+Default
+- `Start()`
+- `Awake()`
+- `OnEnable()`
+
+- `Update()`
+- `FixedUpdate()`
+
 ### GameObject.SetActive 비활성화
 ```csharp
 gameObject.SetActive(false);
