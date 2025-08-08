@@ -1,12 +1,17 @@
-- [[Obsidian]]
 - [공식 홈페이지](https://quartz.jzhao.xyz/)
 ---
+## 개선 사항
+- [x] ⇒ [[Quartz]]: [[스케줄러|윈도우 스케줄러]] 자동 싱크 완료
+	- 문제: 반영이 너무 느리고 번거롭다. 특히 설정값이. 자동으로 반영만 된다면 훨씬 좋을텐데... 윈도우에는 [[스케줄러]]가 없나?
+
 ## 바로 빌드해서 확인해보기
+다음 명령어 입력 후 `localhost:8080`에 접속하면 확인 가능
 ```powershell
 npx quartz build --serve
 ```
-## Custom css
-나의 첫번째 css 커스터마이징
+
+## Custom CSS
+나의 첫번째 CSS 커스터마이징
 체크박스는 체크 안하도록 해결!
 ```scss
 @use "./base.scss";
@@ -14,13 +19,14 @@ npx quartz build --serve
 // 체크된 체크박스 있는 리스트 항목 스타일 덮어쓰기
 .pages article li:has(> input[type="checkbox"]:checked) {
   text-decoration: none;
-  color: white;
+  color: inherited;
 }
 ```
 
-시팔 안되네
-해결!
-## 트러블 슈팅
+- [x] 시팔 안되네: 해결!
+	- `.pages article` 등 클래스, 태그가 적용된 것이 CSS 상에서 우선순위를 가짐
+
+## 초기 세팅: 트러블 슈팅
 ### `index.md` 대신에 `Index.md`가 있으면 꼬여버린다(대소문자 구분)
 이거때문에 1시간을 그냥 버림
 
@@ -30,8 +36,7 @@ npx quartz build --serve
 ChatGPT 따라하다가 시간 다버림
 근데 이렇게 만들어 놓았다 한들 쓰긴 쓰려나? 아무래도 호스팅이 되니 나쁘지는 않은듯
 구글 검색에 뜨게 만들고 싶은데 그런 방법이 있을까?
-
-결국 겁나 많이 쓰고 있다.
+- ⇒ 결국 겁나 많이 쓰고 있다.
 
 ---
 ## 절차
@@ -52,7 +57,6 @@ ChatGPT 따라하다가 시간 다버림
 
 ## ColorScheme
 - [[quartz.config.ts]]
-
 ```ts
 // Currnet
 #a0d08b
