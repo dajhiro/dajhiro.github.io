@@ -29,7 +29,7 @@ PlayerStatus를 GetComponent로 가져와서 사용하는 방향으로 해보자
 
 ### hp
 적에게 맞았을 때
-- 
+- `status -= 1;`
 
 ### `Status.cs` : `ScriptableObject`
 스테이터스 생성
