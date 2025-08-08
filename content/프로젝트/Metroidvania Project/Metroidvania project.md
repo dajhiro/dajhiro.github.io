@@ -27,6 +27,9 @@ PlayerStatus를 GetComponent로 가져와서 사용하는 방향으로 해보자
 그리고 PlayerStatus는 Status: Scriptable Object를 가져오는 방향으로 하자.
 그럼 Status를 수정하는 방식이어야 하는데 가져오는 방법
 
+애니메이션 상태의 복잡성
+- 예를 들어 앉다가 달리는 걸로 바꿀 때 굳이 트랜지션을 달리는 걸로 할 필요 없이 idle로 바꾼 후 가면 되잖아
+
 ### hp
 적에게 맞았을 때
 - `status -= 1;`
