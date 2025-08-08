@@ -27,7 +27,23 @@ PlayerStatus를 GetComponent로 가져와서 사용하는 방향으로 해보자
 그리고 PlayerStatus는 Status: Scriptable Object를 가져오는 방향으로 하자.
 그럼 Status를 수정하는 방식이어야 하는데 가져오는 방법
 
-HP: 
+### hp
+적에게 맞았을 때
+- 
+
+### `Status.cs` : `ScriptableObject`
+스테이터스 생성
+```csharp
+public string name;
+public int hp
+public int stamina
+```
+
+폴더 생성
+- `Assets/ScriptableObject`
+- Asset 생성
+	- `Status.asset`
+
 
 일단 어떻게 가져오며: `public Status status`
 - 에디터에서 가져옴
