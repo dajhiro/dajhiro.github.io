@@ -1,6 +1,10 @@
 - [[Obsidian]]
 - [공식 홈페이지](https://quartz.jzhao.xyz/)
 ---
+## 바로 빌드해서 확인해보기
+```powershell
+npx quartz build --serve
+```
 ## Custom css
 나의 첫번째 css 커스터마이징
 체크박스는 체크 안하도록 해결!
@@ -8,13 +12,14 @@
 @use "./base.scss";
 
 // 체크된 체크박스 있는 리스트 항목 스타일 덮어쓰기
-li:has(> input[type="checkbox"]:checked) {
+.pages article li:has(> input[type="checkbox"]:checked) {
   text-decoration: none;
   color: white;
 }
 ```
 
 시팔 안되네
+해결!
 ## 트러블 슈팅
 ### `index.md` 대신에 `Index.md`가 있으면 꼬여버린다(대소문자 구분)
 이거때문에 1시간을 그냥 버림
