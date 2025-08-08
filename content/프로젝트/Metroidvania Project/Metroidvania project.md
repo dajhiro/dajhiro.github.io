@@ -28,7 +28,9 @@
 
 ---
 - 슬라이딩 후 일어나지 않은 이유는
-
+	- Trigger 발동
+		- Idle 방향 트리거가 Exit Time이 없고
+	- 
 PlayerStatus를 GetComponent로 가져와서 사용하는 방향으로 해보자: 구조 짜는 연습 느낌으로.
 그리고 PlayerStatus는 Status: Scriptable Object를 가져오는 방향으로 하자.
 그럼 Status를 수정하는 방식이어야 하는데 가져오는 방법
