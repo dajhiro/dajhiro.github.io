@@ -43,7 +43,7 @@ EndAttack()
 	- `if (attackPressed)`
 		- 
 
-### Update(): 이벤트 감지
+`Update()`: 이벤트 감지
 - 조건
 	- 공격 키를 감지하면
 	- 다른 상태가 아닐 때
@@ -53,6 +53,18 @@ EndAttack()
 	- 공격 플래그 true
 
 
+공격 트리거 발생 ⇒ 애니메이션 재생
+애니메이션 중간 칼을 휘두르는 신에서
+`Attack()` 실행
+`Collider2D.Overlap()`: `Collider2D`에 감지되는 적들을 배열로 가져옴
+배열 내 적 각각 `TakeDamage()` 실행
+
+애니메이션 끝에서
+공격 플래그 off
+대시 플래그 off
+그후 
+상태
+move
 
 
 
