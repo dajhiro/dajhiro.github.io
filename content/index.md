@@ -14,3 +14,4 @@
 ## 기타
 - [[Welcome|Private]]
 	- [[AutoHotKey]]
+	- [[Edge]]
