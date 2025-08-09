@@ -1,4 +1,7 @@
-## 최근
+# 최근
+## Input System
+[작업 | 입력 시스템 | 1.14.2](https://docs.unity3d.com/Packages/com.unity.inputsystem@1.14/manual/Actions.html
+
 ## MonoBehaviour
 ### 유니티 컴포넌트 생명 주기
 - **게임 오브젝트 생성 → 컴포넌트 추가 → 활성화 → 첫 프레임 → 비활성화 → 파괴**
