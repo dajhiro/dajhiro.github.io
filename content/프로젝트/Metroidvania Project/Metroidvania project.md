@@ -62,9 +62,6 @@ EndAttack()
 애니메이션 끝에서
 공격 플래그 off
 대시 플래그 off
-그후 
-상태
-move
 
 
 
