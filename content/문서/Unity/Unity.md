@@ -1,6 +1,6 @@
 # 최근
-## Input System
-[작업 | 입력 시스템 | 1.14.2](https://docs.unity3d.com/Packages/com.unity.inputsystem@1.14/manual/Actions.html
+## [[Input System]]
+바인딩: 액션 - 디바이스 컨트롤
 
 ## MonoBehaviour
 ### 유니티 컴포넌트 생명 주기
