@@ -16,8 +16,31 @@
 - [ ] UI: 적 HP 바 만들기
 	- [x] UI Slider: 기본
 	- [x] 머리 위에 따라다니게 하기
+		- [ ] 게임 오브젝트의 속성(너비, 높이) 
+			- [ ] Render
+			- [ ] Collider
 	- [ ] 크기 조절하기: 몬스터 크기와 딱 맞추는 법이 없을까?
 		- [ ] 씬 뷰에서 조절하고 싶은데 어렵다
+
+너비,높이
+[[Sprite Renderer]]
+```csharp
+SpriteRenderer sr = gameObject.GetComponent<SpriteRenderer>();
+
+Vector3 size = sr.bounds.size;
+float width = size.x;
+float height = size.y;
+```
+
+[[Rect Transform]]
+```csharp
+RectTransform rt = gameObject.GetComponent<RectTransform>();
+if (rt != null)
+{
+	float width = rt.rect.width;
+	float height = rt.rect.height;
+}
+```
 
 머리 위에 따라다니게 하는 법
 ```csharp
