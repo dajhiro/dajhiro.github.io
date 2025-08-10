@@ -16,13 +16,17 @@
 - [ ] UI: 적 HP 바 만들기
 	- [x] UI Slider: 기본
 	- [x] 머리 위에 따라다니게 하기
-		- [ ] 게임 오브젝트의 속성(너비, 높이) 
-			- [ ] Render
-			- [ ] Collider
+		- [x] 게임 오브젝트의 속성(너비, 높이) 
 	- [ ] 크기 조절하기: 몬스터 크기와 딱 맞추는 법이 없을까?
 		- [ ] 씬 뷰에서 조절하고 싶은데 어렵다
 
-너비,높이
+적용
+- UI Slider 만들기
+	- 슬라이더 스크립트 만들기
+		- 피봇은 정중앙으로 설정
+	- 
+
+게임 오브젝트의 속성(너비,높이)
 [[Sprite Renderer]]
 ```csharp
 SpriteRenderer sr = gameObject.GetComponent<SpriteRenderer>();
@@ -42,7 +46,7 @@ if (rt != null)
 }
 ```
 
-머리 위에 따라다니게 하는 법
+### 머리 위에 따라다니게 하는 법
 ```csharp
 public Transform target;
 public Vector3 offset = new Vector(0, 1f, 0);
@@ -55,7 +59,7 @@ hpBarRect.position = screenPosition;
 
 ```
 
-UI Slider 기본
+### UI Slider 기본
 ```csharp
 public Slider hpSlider
 
