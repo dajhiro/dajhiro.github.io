@@ -14,8 +14,32 @@
 ---
 ## [[250810(일)]]
 - [ ] UI: 적 HP 바 만들기
-- UI Slider
-	- 
+	- [x] UI Slider: 기본
+	- [x] 머리 위에 따라다니게 하기
+	- [ ] 크기 조절하기: 몬스터 크기와 딱 맞추는 법이 없을까?
+		- [ ] 씬 뷰에서 조절하고 싶은데 어렵다
+
+머리 위에 따라다니게 하는 법
+```csharp
+public Transform target;
+public Vector3 offset = new Vector(0, 1f, 0);
+public Camera mainCamera;
+public RectTransform hpBarRect;
+
+Vector3 worldPosition = target.position + offset;
+Vector3 screenPosition = mainCamera.WorldToScreenPoint(worldPosition);
+hpBarRect.position = screenPosition;
+
+```
+
+UI Slider 기본
+```csharp
+public Slider hpSlider
+
+hpSlider.maxValue = 10;
+hpSlider.value = 5;
+
+```
 
 ## [[250809(토)]]
 기능 추가/변경
