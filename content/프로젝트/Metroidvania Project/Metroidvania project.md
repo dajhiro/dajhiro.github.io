@@ -1,5 +1,5 @@
 - 깃허브 링크: https://github.com/hiro-jeon/Metroidvania-Scripts
-## 구조
+## [[현황]]
 ```markdown
 <!-- Script -->
 * CameraManager.cs
@@ -13,9 +13,8 @@
 
 ---
 ## [[250810(일)]]
-
 Instantiate: 프리팹을 할당하려면?
-Instantiate: 변수
+Instantiate: 변수: `GameObject`
 
 목표
 - [ ] UI: 적 HP 바 만들기
