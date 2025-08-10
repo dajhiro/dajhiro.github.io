@@ -1,12 +1,11 @@
 ## [[프로젝트]]
 - [[Metroidvania project]]
-- [나의 Unity 문서](Unity)
+- [[Unity|My Unity Documents]]
 
 ## [[도구]]
 - [[PowerShell]]
 - [[Quartz]]
 - [[Vim]]
-- 색상
 - ~~[[Notion]]~~
 - [[기타]]
 
