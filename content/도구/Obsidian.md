@@ -2,9 +2,19 @@
 alias:
 - 옵시디언
 ---
-- Image
+## 목차
+- wikilink
 - Properties
 - [[Quartz]]
+
+## Embed
+
+## Heading
+```markdown
+![[Note.md#Title1]]
+```
+### Heading: 예시
+- ![[Public/프로젝트/Metroidvania Project/일지/일지#250811(월)]]
 
 ## Image
 ```markdown
