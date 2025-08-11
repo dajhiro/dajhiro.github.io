@@ -8,7 +8,6 @@
 
 ## feat: Enemy
 - [ ] `prefab`: bat
-	- [ ] 
 
 ## feat: Player
 ### 기능
