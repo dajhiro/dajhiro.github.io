@@ -14,7 +14,7 @@ alias:
 ![[Note.md#Title1]]
 ```
 ### Heading: 예시
-- ![[Public/프로젝트/Metroidvania Project/일지/일지#250811(월)]]
+ ![[Public/프로젝트/Metroidvania Project/일지/일지#250811(월)]]
 
 ## Image
 ```markdown
