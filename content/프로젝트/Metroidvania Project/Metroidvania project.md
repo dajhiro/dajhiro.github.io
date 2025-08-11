@@ -6,6 +6,10 @@
 ## refactor:
 - [ ] 애니메이션 구조 단순화
 
+## feat: Enemy
+- [ ] `prefab`: bat
+	- [ ] 
+
 ## feat: Player
 ### 기능
 - [ ] `attack`: `combo-attack`
