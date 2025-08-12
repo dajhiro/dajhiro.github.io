@@ -1,6 +1,6 @@
 ## Movement
 정리된 부분
-### property: direction
+### property: `direction`
 ```csharp
 private Vector2 direction;
 ```
@@ -8,7 +8,7 @@ private Vector2 direction;
 - `isChasing == true`: 플레이어 방향
 - `isChasing == false`: 랜덤 방향 `([-1, 1], [-1, 1])`
 
-### property: move
+### property: `move`
 ```csharp
 private Vector2 move;
 ```
@@ -17,7 +17,9 @@ private Vector2 move;
 	- `isEdge == true`
 		- `Vector.zero`
 	- `isEdge == false`
-		- `direction.`
+		- `move.x = direction.x`
+- `isAir`
+	- `move = direction`
 
 
 추후 수정하자
