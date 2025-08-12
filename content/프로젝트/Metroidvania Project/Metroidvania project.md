@@ -55,7 +55,7 @@
 - [x] 카메라
 	- [x] 따라오기
 	- [x] Clamp
-- [ ] hpBar
+- [x] UI: `EnemyHpBar`
 
 
 
