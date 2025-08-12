@@ -6,8 +6,15 @@
 ## refactor:
 - [ ] 애니메이션 구조 단순화
 
+`feat`: Player
+- [ ] 점프 어택 기능 추가하기
+
 ## feat: Enemy
-- [ ] `prefab`: bat
+- [x] `prefab`: bat
+
+기능
+`EnemyAttack.cs`
+- [x] `Attack()`
 
 ## feat: Player
 ### 기능
