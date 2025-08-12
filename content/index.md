@@ -13,5 +13,5 @@
 
 ---
 ## 기타
-	- [[AutoHotKey]]
-	- [[Edge]]
+- [[AutoHotKey]]
+- [[Edge]]
