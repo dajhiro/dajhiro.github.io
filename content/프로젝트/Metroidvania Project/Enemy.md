@@ -1,3 +1,55 @@
+## Movement
+정리된 부분
+### property: direction
+```csharp
+private Vector2 direction;
+```
+방향만을 의미한다
+- `isChasing == true`: 플레이어 방향
+- `isChasing == false`: 랜덤 방향 `([-1, 1], [-1, 1])`
+
+### property: move
+```csharp
+private Vector2 move;
+```
+조건을 받아들여서 실제로 움직이는 방향으로 정한다
+- `!isAir`
+	- `isEdge == true`
+		- `Vector.zero`
+	- `isEdge == false`
+		- `direction.`
+
+
+추후 수정하자
+- IsOnEdge면 움직임을 중단해야 한다
+	- 근데 IsOnGround일 때에만 체크해야 한다
+	- 이걸 다 합치려고 하니까 미친다
+- 하나하나 분리하자
+IsOnGround
+근데 또 IsOnGround를 넘어가버리는 현상이 발생한다
+IsOnEdge는 가고자 하는 방향이나, 가고 있는 방향으로 레이를 쏴서 물건이 있는지 확인한다
+
+
+움직임
+isEdge
+공중에 떠있든지
+움직이는 방향에 아무것도 없든지
+
+Move()
+
+move
+실제 움직임: Move()에서만 동작
+
+direction
+방향: 랜덤 또는 플레이어 
+
+direction은 정해지는 것: normalize 할 필요 없음
+move에서 
+move는 변환
+- 공중
+- 지상
+
+
 ## Scripts
 ### `Enemy.TakeDamage()`
 ### 완료: 넉백으로 날라가지 않게: [[250807(목)]], 18:36
