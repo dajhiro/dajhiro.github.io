@@ -3,13 +3,44 @@
 - [ ] 폴딩
 
 ---
+## autocmd
+폴딩 내역 자동 저장/불러오기
+```vim
+autocmd BufWinEnter * silent! loadview
+autocmd BufWinLeave * mkview
+```
+- **`autocmd`**: 자동 명령어(autocommand)를 정의하는 키워드입니다.
+- **`BufWinEnter`**: 버퍼(Buffer)가 윈도우(Window)에 표시될 때 발생하는 이벤트입니다.
+- **`*`**: 모든 파일 이름에 대해 적용합니다.
+- **`silent!`**: 명령 실행 시 에러 메시지 등을 표시하지 않도록 합니다.
+- **`loadview`**: 현재 버퍼에 저장된 뷰 정보를 불러옵니다. (커서 위치, 접기 상태, 창 크기 등)
+
+즉, 다음과 같다
+```vim
+autocmd [event] [file] [command]
+```
+
+---
+
 ## Folding
+명령어
+`:mkview` 폴드 상태 생성
+`:loadview` 폴드 상태 불러오기
+
 생성/삭제
 - `zf`
 - `zd`
 
 접기/열기
-- `za`
+- 토글: `za`
+- 접기: `zc`
+- 열기: `zo`
+
+전부 접기/열기
+- `zM`
+	- Minimize
+- `zR`
+	- Reveal
 
 
 ## 현재 커서 위치의 단어 검색
