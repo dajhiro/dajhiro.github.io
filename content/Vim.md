@@ -1,11 +1,19 @@
 모르는 거
 - [x] 현재 커서 위치 단어 검색
-- [ ] 폴딩
+- [x] 기능: 폴딩
+- [ ] 명령어: `autocmd`
 
 ---
-## autocmd
+## 명령어
+`0r [filename]`
+- `0`: 0번째 줄
+	- 0번째가 존재하는 구나?
+- `r`: read
+
+
+### 명령어: `autocmd`
 어떤 파일들에 대해서 이벤트 값 발생시 명령어들을 자동으로 실행
-### 폴딩 상태 자동 저장/불러오기
+### autocmd: 폴딩 상태 자동 저장/불러오기
 
 ```vim
 " ~/_vimrc
@@ -27,10 +35,9 @@ autocmd [event] [file] [command]
 
 ```vim
 " ~/_vimrc
-
 augroup Template
 	autocmd!
-	autocmd BufNewFile *.cs 0r ~/vimfile/templates/template.cs
+	autocmd BufNewFile *.cs execute '0r ~/vimfiles/templates/template.cs' | execute '%s/NewFile/' . expand('%:t:r') . '/g'
 augroup END
 ```
 
