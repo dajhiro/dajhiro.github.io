@@ -4,8 +4,11 @@
 
 ---
 ## autocmd
-폴딩 내역 자동 저장/불러오기
+어떤 파일들에 대해서 이벤트 값 발생시 명령어들을 자동으로 실행
+### 폴딩 상태 자동 저장/불러오기
+
 ```vim
+" ~/_vimrc
 autocmd BufWinEnter * silent! loadview
 autocmd BufWinLeave * mkview
 ```
@@ -20,9 +23,21 @@ autocmd BufWinLeave * mkview
 autocmd [event] [file] [command]
 ```
 
----
+### 템플릿 만들기
 
-## Folding
+```vim
+" ~/_vimrc
+
+augroup Template
+	autocmd!
+	autocmd BufNewFile *.cs 0r ~/vimfile/templates/template.cs
+augroup END
+```
+
+
+
+---
+## 기능: Folding
 명령어
 `:mkview` 폴드 상태 생성
 `:loadview` 폴드 상태 불러오기
