@@ -5,15 +5,25 @@
 
 ---
 ## 명령어
+
 `0r [filename]`
 - `0`: 0번째 줄
 	- 0번째가 존재하는 구나?
 - `r`: read
 
+와 근데 함수들도 명령어에서 합칠 수 있구나...
+`.` 문자열 사이를 연결해주는 역할 (`+`와 비슷함)
 
-### 명령어: `autocmd`
+함수: `expand()`
+- **기능**: 문자열 패턴을 확장하여 파일 이름, 경로, 환경 변수 등 정보를 가져옵니다.
+- **예시**:
+    - `expand('%')` : 현재 버퍼의 전체 파일 경로
+    - `expand('%:t')` : 현재 파일 이름만 (경로 제외)
+    - `expand('%:t:r')` : 확장자 제외한 파일 이름만
+
+## 명령어: `autocmd`
 어떤 파일들에 대해서 이벤트 값 발생시 명령어들을 자동으로 실행
-### autocmd: 폴딩 상태 자동 저장/불러오기
+### `autocmd`: 폴딩 상태 자동 저장/불러오기
 
 ```vim
 " ~/_vimrc
@@ -31,8 +41,7 @@ autocmd BufWinLeave * mkview
 autocmd [event] [file] [command]
 ```
 
-### 템플릿 만들기
-
+### `autocmd`: 템플릿 만들기
 ```vim
 " ~/_vimrc
 augroup Template
@@ -40,10 +49,35 @@ augroup Template
 	autocmd BufNewFile *.cs execute '0r ~/vimfiles/templates/template.cs' | execute '%s/NewFile/' . expand('%:t:r') . '/g'
 augroup END
 ```
+`autocmd BufNewFile *.cs`
+- **`autocmd`**: 자동 명령어(autocommand)를 등록하는 명령입니다.
+- **`BufNewFile`**: 새로 생성한 버퍼(파일)가 열릴 때 발생하는 이벤트입니다.
+- **`*.cs`**: `.cs` 확장자를 가진 파일에만 적용합니다.
 
-
+즉, **새로 만드는 C# 파일에 대해 자동으로 명령을 실행하라**는 뜻입니다.
 
 ---
+
+`execute '0r ~/vimfiles/templates/template.cs'`
+- **`execute`**: 문자열로 된 Vim 명령어를 실행합니다.
+- **`0r`**: 커서를 0번(첫 번째) 줄로 이동한 뒤, 그 위치에 파일 내용을 읽어들여 삽입하는 명령(`r` = read)입니다.
+- **`~/vimfiles/templates/template.cs`**: 읽어들일 템플릿 파일 경로입니다.
+
+즉, 새 `.cs` 파일을 만들면 템플릿 파일 내용을 **버퍼 맨 위에 삽입**합니다.
+
+---
+- `|`
+	- 명령어 구분자입니다.
+	- 앞 명령어가 끝난 뒤에 이어서 다음 명령어를 실행하게 합니다.
+
+---
+
+`execute '%s/NewFile/' . expand('%:t:r') . '/g'`
+- 다시 `execute`를 사용해 substitution(치환) 명령을 실행합니다.
+- `%s/.../.../g`는 현재 버퍼 전체(`%`)에서 문자열을 찾아서 교체하는 명령입니다.
+- **찾는 문자열**: `NewFile` (템플릿에 적힌 플레이스홀더)
+- **교체할 문자열**: `expand('%:t:r')`
+
 ## 기능: Folding
 명령어
 `:mkview` 폴드 상태 생성
