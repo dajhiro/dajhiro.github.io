@@ -1,12 +1,15 @@
 - 깃허브 링크: https://github.com/hiro-jeon/Metroidvania-Scripts
 - [[문서]]
 - [[일지]]
+
 ---
 # 현황
+- [x] feat: `Door`
+
 ## refactor:
 - [ ] 애니메이션 구조 단순화
 
-`feat`: Player
+feat: Player
 - [x] 점프 어택 기능 추가하기
 - [x] 대시어택 업그레이드
 	- [ ] 공격력 별도 
