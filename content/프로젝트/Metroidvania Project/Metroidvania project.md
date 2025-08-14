@@ -5,6 +5,7 @@
 ---
 # 현황
 - [x] feat: `Door`
+- [ ] feat: Golem(Boss)
 
 ## refactor:
 - [ ] 애니메이션 구조 단순화
