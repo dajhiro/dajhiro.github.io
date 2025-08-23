@@ -1,4 +1,5 @@
-## 순서
+[[Boss-Anim]]
+## 기능 순서도
 - `default`: 돌덩이 들고다니는
 	- ⇒ `mode1`: `Golem_AttackA`
 	- ⇒ `mode2`: `Golem_Upgrade`
