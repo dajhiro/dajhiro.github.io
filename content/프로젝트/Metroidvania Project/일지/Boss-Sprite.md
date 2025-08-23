@@ -3,16 +3,16 @@
 	- ⇒ `mode1`: `Golem_AttackA`
 	- ⇒ `mode2`: `Golem_Upgrade`
 - `mode1`: 돌덩이 없는(Run이 없다?)
-	- ⇒ `default`: `Golem_Reset`
+	- kj< + ⇐`default`: `Golem_Reset`
 - `mode2`: Armor(Upgrade)
 	- ⇒ `default`: `Golem_Armor_ArmorBreak`
 
 ## 목록
 `default`
 - `Golem_IdleB`
-- `Golem_Run`
 - `Golem_HitB` 
 - `Golem_DeathB`
+- `Golem_Run`
 - `Golem_AttackA`
 - `Golem_Upgrade`
 
