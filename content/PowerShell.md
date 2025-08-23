@@ -29,6 +29,12 @@ g++ main.cpp
 
 ---
 ## 설정
+
+```powershell
+# 적용
+. $PROFILE
+```
+
 ### 개인 설정값
 설정 파일은 `$PROFILE`에 저장되어 있음.
 - [x] 프로파일 환경변수를 어떻게 설정했는지는 기억이 안남.
@@ -51,12 +57,6 @@ Set-Alias [A] [B] # A를 B로 설정한다
 ```powershell
 vi $PROFILE
 ```
-
-### 적용
-```powershell
-. $PROFILE
-```
-
 ---
 ## 명령어
 ### Powershell
