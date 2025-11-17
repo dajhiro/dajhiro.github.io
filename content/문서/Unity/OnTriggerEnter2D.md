@@ -1,4 +1,4 @@
-- [[Unity]]
+- [[../Unity]]
 
 ### (GPT)여러 개의 레이어를 LayerMask로 비교
 ```csharp

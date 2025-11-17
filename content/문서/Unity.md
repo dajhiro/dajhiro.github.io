@@ -43,7 +43,7 @@ gameObject.SetActive(false);
 [Range(min, max)]
 ```
 
-### [[Coroutine]]
+### [[../../../게임 프로젝트/프로젝트/Metroidvania Project/Coroutine]]
 - `StartCoroutine()`
 	- 비동기적이므로 실행 즉시 다음 코드로 넘어간다
 	- 코루틴을 끝내고 넘길지, 아니면 코루틴을 무시하고 갱신할지는 선택할 수 있음
@@ -64,7 +64,7 @@ GameObject
 
 [[Trigger]]
 - [`OnTriggerEnter2D()`](OnTriggerEnter2D)
-- [`OnTriggerStay2D()`](OnTriggerStay2D)
+- [`OnTriggerStay2D()`](../../../게임%20프로젝트/프로젝트/Metroidvania%20Project/OnTriggerStay2D.md)
 
 Collision(충돌: Collider 아님)
 - `OnCollisionEnter2D(Collision2D col)`
@@ -74,4 +74,4 @@ Rigidbody2D
 
 
 ---
-- [[Animation]]
+- [[../../../게임 프로젝트/프로젝트/Metroidvania Project/Animation]]

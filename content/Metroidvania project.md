@@ -1,6 +1,6 @@
 - 깃허브 링크: https://github.com/hiro-jeon/Metroidvania-Scripts
 - [[문서]]
-- [[일지]]
+- [[Metroidvania Project/일지/일지]]
 
 ---
 # 현황

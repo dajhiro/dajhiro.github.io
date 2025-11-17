@@ -30,5 +30,5 @@
 	- 게임: [[Metroidvania project]]
 	- 게임: [[Meow Squad]] (별칭: 냥냥특공대)
 - [[도구]]
-- [[Unity|My Unity Documents]]
+- [[문서/Unity|My Unity Documents]]
 - [[Private]]
