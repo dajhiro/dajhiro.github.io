@@ -26,8 +26,9 @@
 ---
 ## 기타
 - 프로젝트
+	- 웹 서비스: [[TexTube]]
 	- 게임: [[Metroidvania project]]
-	- 게임: [[Meow Squad]]
+	- 게임: [[Meow Squad]] (별칭: 냥냥특공대)
 - [[도구]]
 - [[Unity|My Unity Documents]]
 - [[Private]]
