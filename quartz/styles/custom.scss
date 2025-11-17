@@ -5,3 +5,14 @@
   text-decoration: none;
   color: inherit;
 }
+
+// 모바일에서 사이드바 고정 해제 
+@media (max-width: 768px) {
+  .sidebar,
+  .left {
+    position: static !important;
+    top: auto !important;
+    height: auto !important;
+  }
+}
+
