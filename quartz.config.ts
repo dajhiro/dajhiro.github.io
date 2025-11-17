@@ -9,7 +9,7 @@ import * as Plugin from "./quartz/plugins"
  */
 const config: QuartzConfig = {
   configuration: {
-    pageTitle: "hirodev",
+    pageTitle: "dajhiro",
     pageTitleSuffix: "",
     enableSPA: true,
     enablePopovers: true,
@@ -17,15 +17,15 @@ const config: QuartzConfig = {
       provider: "plausible",
     },
     locale: "ko-KR",
-    baseUrl: "hiro-jeon.github.io/quartz/",
+    baseUrl: "dajhiro.github.io/quartz/",
     ignorePatterns: ["private", "templates", ".obsidian"],
     defaultDateType: "modified",
     theme: {
       fontOrigin: "googleFonts",
       cdnCaching: true,
       typography: {
-        header: "Gothic A1",
-        body: "Gothic A1",
+        header: "Noto Serif KR",
+        body: "Noto Serif KR",
         code: "IBM Plex Mono",
       },
       colors: {
@@ -35,8 +35,8 @@ const config: QuartzConfig = {
           gray: "#b8b8b8",
           darkgray: "#4e4e4e",
           dark: "#2b2b2b",
-          secondary: "#a0d08b",
-          tertiary: "#c5e4a8",
+          secondary: "#809471",      // 기준색(128 148 113)
+          tertiary:  "#9fb692",      // 밝은 보조 톤
           highlight: "rgba(143, 159, 169, 0.15)",
           textHighlight: "#fff23688",
         },
@@ -46,8 +46,8 @@ const config: QuartzConfig = {
           gray: "#646464",
           darkgray: "#d4d4d4",
           dark: "#ebebec",
-          secondary: "#a0d08b",
-          tertiary: "#c5e4a8",
+          secondary: "#809471",      // 기준색(128 148 113)
+          tertiary:  "#9fb692",      // 밝은 보조 톤
           highlight: "rgba(143, 159, 169, 0.15)",
           textHighlight: "#b3aa0288",
         },
