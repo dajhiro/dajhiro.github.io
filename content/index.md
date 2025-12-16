@@ -30,6 +30,6 @@
 	- 웹 서비스: [[TexTube]]
 	- 게임: [[../../프로젝트/Metroidvania Project/Metroidvania project]]
 	- 게임: [[Meow Squad]] (별칭: 냥냥특공대)
-- [[../도구]]
-- [[../문서/Unity/Unity|My Unity Documents]]
+- [[도구]]
+- [[문서/Unity/Unity|My Unity Documents]]
 - [[Private]]
