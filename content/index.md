@@ -1,50 +1,268 @@
 - [[Private]]
-- [[Projects]]
 - [[이력서]]
+- [[Claude Code]]
 
-### [[TexTube/TexTube]] 출시까지 남은 기간
-- [x] 251231(수)
-- [x] 251230(화)
-- [x] 251229(월)
-- [[버그]]
-- TexTube 프론트엔드: [[Next.js]]
-- TexTube 백엔드: [[NestJS]]
+## [[TexTube/TexTube|TexTube]]
+TexTube는 YouTube 영상을 글로 옮기는 서비스야
 
-## 260102(금)
-TexTube는 youtube 영상을 글로 옮기는 서비스야
-Post에서 id는 일단 youtube 상 게시글 id로 할 거라서 int는 안돼
-추후 youtube 말고 다른 페이지에서도 글을 옮길 거라서 출처를 남기기는 해야해
+### 260106(화)
+- 구조 정리하기
+- package.json 필요없는 거 정리하기
+- !실패: youtube.js(InnerTube)로 바꾸기
+    - InnerTube 분기화 legacy/new
+- Channel 마이그레이션이 안된 거 구현
+
+## 질문
+### 각 에러처리를...
+어떤 부분에서 하면 좋을까?
+
+### 프로젝트를 여러개 만들면 gemini-flash의 무료 한도를 계속 쓸 수 있나?
+https://gemini.google.com/app/65846c57efeaf6ae
+=> 가능: 와 프로젝트당 키를 3개까지 만들어서 한도를 조금만 늘려보자
+
+### NestJS 모듈 컨벤션
+모듈이 커질때에는 users, posts, channels 등...을 또 다른 폴더를 만들어서 분류해야 할까?
+
+
+```
+  src/
+  ├── core/                   # Framework & database setup
+  │   ├── prisma/             ✓ (prisma module, service, tests)
+  │   └── auth/               ✓ (auth module, service, controller, strategies, guards)
+  │
+  ├── integrations/           # External APIs (Low-level)
+  │   ├── ai/                 ✓ (Gemini AI service, prompts, DTOs)
+  │   ├── youtube-data/       ✓ (YouTube Data API v3)
+  │   └── innertube/          ✓ (YouTube transcript extraction)
+  │
+  ├── features/               # Business logic (High-level)
+  │   └── content-pipeline/   ✓ (Orchestrates all integrations)
+  │
+  ├── domain/                 # Data & CRUD
+  │   ├── users/              ✓ (User module, service, controller, DTOs)
+  │   └── posts/              ✓ (Post module, service, controller, DTOs)
+  │
+  └── common/                 # Shared utilities
+      └── types/              ✓ (Express type definitions)
+```
+
+tsconfig.json
+```
+"paths": {
+  "@modules/*": ["src/modules/*"],
+  "@integrations/*": ["src/integrations/*"],
+  "@core/*": ["src/core/*"]
+}
+```
+
+**모듈 경계 준수:** `integrations`에 있는 모듈(예: `ai`)은 가급적 우리 서비스의 DB 엔티티를 직접 알지 못하게 하고, `dto`나 `interface`로만 소통하는 것이 좋습니다.
+
+### 에러 처리에 관한 고민
+각 모듈화 분리에 성공하면 에러 처리도 수월해질 거 같은데
+조금 무섭다.
+
+## TODO
+### 백엔드
+- [x] Channel 테이블 만들기
+- [ ] Post 기능: find 후
+    - 있으면 등록
+    - 없으면 새로 생성 후 등록
+- [x] 포스팅 테스트하기
+- [ ] User에 capacity 컬럼 만들기
+    - [ ] capacity를 태평양 시각 자정을 기준으로
+
+### 파이프라인
+- [ ] 해당 id가 있는지 먼저 검사하기
+
+### 프론트엔드
+- [ ] 폼 모달창 만들기
+    - 구조
+        - URL 넣는 공간
+        - 공개 체크박스(기본값)
+        - 내 유저정보 (Hidden)
+        - 보내기, 취소(또는 모달창 밖에 누르면 사라짐)
+    - 업로드 버튼을 눌렀을 때
+        - 로그아웃 상태 => 로그인 모달
+        - else => 업로드 버튼 
+
+[[프론트엔드]]
+테스트를 어떻게 하지?
+title은 유튜브 제목 그대로 하고 싶은데 일단 AI로 하자.
+
+front
+PENDING 상태일 경우 비활성화 사진이랑 
+
+[[Post]]
+각 API가 무슨 역할을 맡는지
+- youtubeId
+Youtube Data API
+- thumbnailUrl
+- channel
+    - id
+    - name
+    - image
+AI
+- category
+- tags
+- metadata
+    - seo
+    - ai_stats
+InnerTube API
+- Caption
+
+
+핵심기능
+
+PostsService
+
+프롬프트 외부화
+Constants 파일
+
+모듈 네이밍 컨벤션
+- [x] 기술 스택(API) 중심
+- [ ] 기능 중심
+  
+### 인증
+Next 인증 상태 Context 설정하기
+
+### [[Post]]
+category 추가
+
+markdown frontmatter
+
+### SSR 전략
+AI를 사용했을 때
+마크다운으로 출력받기
+json으로 출력받기
+
+### 다음 프롬프트
+```
+스키마를 확인해서 새롭게 추가된 것들을 적용하기 위해 Youtube Data API V3가 필요해
+Youtube Data API
+```
+
+Youtube Data API: 유튜브 영상 id로
+channel 정보 DB
+- Channel id
+- Channel name
+- Channel profile photo url
+- Channel Link: id로 url을 만드므로 따로 없어도 됨
+
+thumbnail url 추출
+
+`viedos.list`
+- `channelId`
+    - db에 존재하지 않으면 새로 생성 후
+        - `channel.list`로 name, image 추출
+- `thumbnails`
+    - 가장 큰 사이즈의 url
+
+metadata 
+```json
+{
+  "seo": {
+    "title": "AI가 생성한 최적화 제목",
+    "description": "이 글의 핵심 내용을 150자 내외로 요약한 문장",
+    "ogImage": "https://cdn.example.com/generated-cover.png",
+    "keywords": ["AI", "SSR", "PostgreSQL"]
+  },
+  "content_info": {
+    "reading_time": 5,
+    "word_count": 1240,
+    "difficulty": "Intermediate",
+    ]
+  },
+  "ai_stats": {
+    "model": "gemini-1.5-pro",
+    "version": "2.0",
+    "generated_at": "2026-01-05T15:00:00Z",
+    "prompt_tokens": 450,
+    "completion_tokens": 1200
+  },
+  "youtube": {
+  }
+}
+```
+
+세 모듈을 추가할거야
+- AI API 모듈
+- Youtube Data API 
+- InnerTube API
+
+PostgreSQL Prisma
+
+id
+
+
+Essential
+- title
+- description
+- publishedAt
+- creator
+
+Organization
+- category
+- tags
+- status
+
+Visuals
+- thumbnailUrl
+- ogImage
+
+Core
+- content
+- toc
+
+
+### o
+TexTube는 YouTube 영상을 글로 옮기는 서비스야
+[[TexTube/textube_strategy_analysis]]
+
+[[Next.js NestJS 연결]]
+
+InnerTube API로 할 수 있는 것
+일단 유튜브 URL에서 뽑아내야 하는 것
+- Youtube URL
+- 썸네일 URL
+
+다음에 해야하는 것
+
+
+Backend 마저
+[[Textube/Backend/Schema|Schema]]
+[[Get Transcript]]
+[[TexTube/YouTube Data API]]
+
+Post에서 id는 일단 유튜브 상 게시글 id로 할 거라서 int는 안돼 => string
+추후 youtube 말고 다른 페이지에서도 글을 옮길 거라서 **출처**를 남기기는 해야해
 그리고 반드시 원작자의 프로필: 이름, 사진
 을 넣어야 하거든 그게 author야
 
 글을 공유한(옮긴) 사람의 id (Textube 내의 유저)는 별도로 보관할거야
 
 Youtube에서 해당 게시자가 회원탈퇴하면 영상은 어떻게 되나?
+=> 삭제된다
+TexTube에서는? 
+=> 그대로 둔다
 
-게시글
+### 게시글
 좋아요 누른 사람들의 목록
 TexTube에서 게시글은 공공 소유야 근데
 삭제하고 싶은 것들은 처음 사람이 지울 수 있게 할 건데
 그 사람이 회원탈퇴하면 삭제할 수 있는 사람이 없어져버려
 
 그냥 익명화로 바꿔버릴까? 그럼 트롤들이 많아질 거 같기도 하고
-
-
 삭제 권한을 아예 없애버리면 
 
 비공개 게시글을 만들긴 할거고
 
-좋아요라는 기능으로 모든 사람들의 
+좋아요라는 기능으로 최초 제공자, 이용자를 포함
 타임스탬프는 좀 
 
 내 포스트
-
 아 몰라 일단 나 혼자 사용할 수 있게 해야겠다.
 그 다음에 생각할래
 내가 만든 것들은 내가 지우면 되잖아?
-
-Youtube API key
-https://www.googleapis.com/youtube/v3/videos?part=snippet&id=Cm8DPglzEgE&key=
 
 정보는 다음과 같이
 이제 캡션을 가져오려면
@@ -56,26 +274,7 @@ zsh에서 환경변수 저장하기
 
 비공식 방법이란 걸 몰랐네
 
-```json
-"captions": {
-  "playerCaptionsTracklistRender": {
-    "captionTracks": [
-      {
-        "baseUrl": "https://*.com/...",
-        "name": {
-          "simpleText": "English"
-        },
-        "vssId": ".en",
-        "isTranslatable": "true",
-        "trackName": ""
-      },
-      {
-        "...": "..."
-      }
-    ]
-  }
-}
-```
+[[TexTube/Youtube Transcript API]]
 `data.captions.playerCaptionsTracklistRenderer.captionTracks`
 
 asr은 하나밖에 없으니까 
@@ -104,7 +303,7 @@ asr로 언어를 탐지하고
 
 [[NestJS]]
 
-[[Schema]] Schema 작성하기
+[[Textube/Backend/Schema]] Schema 작성하기
 
 ## 251230(화)
 대충 Prisma 사용법은 알겠다.
@@ -146,7 +345,7 @@ https://console.cloud.google.com/
 MCP 서버 이용하는 법
 
 ### AI 도우미 
-[[Claude Code]]
+[[../Claude Code/Claude Code]]
 
 ### Railway
 Railway로 한번 백엔드를 구축해보자. NestJS를 사용한다.
@@ -228,6 +427,31 @@ Netlify
 - [ ] [옵시디언에서 `.astro` 코드블럭 사용하는 방법](https://claude.ai/chat/20dc4031-9557-4e8b-bdae-1f024d84282c)
 ### 새로운 시작
 이번주부터는 TexTube 본격적 개발
+
+## TexTube
+- [[Frontend]]: [[Next.js]]
+    - 배포: [[Cloudflare]] Pages
+- [[Backend]]: [[NestJS]]
+    - 배포: [[Railway]] + PostgreSQL
+    - 파이프라인: API
+        - [[Groq]], [[Gemini]]
+        - [[Youtube API]]
+
+[[Frontend]]
+[[Backend]]
+[[Post]]
+
+[[Commit]]
+
+PostgreSQL를 사용하면 직접 SQL을 넣는 거랑 다른 모듈을 이용하는 거랑 뭐가 좋을까?
+
+NestJS 도커파일만 넣으면 된다.
+Railway 사용법
+Railway DB 사용하는 법
+
+[[TexTube 인증]]
+
+제발
 
 
 
