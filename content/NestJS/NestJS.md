@@ -1,4 +1,11 @@
-삼중구조
+### 환경변수
+NestJS에서 환경변수를 읽어들이는 법
+`.env`
+`.env.local`
+`.env.prod`
+
+---
+### 삼중구조
 - Module
 - Service
 - Controller

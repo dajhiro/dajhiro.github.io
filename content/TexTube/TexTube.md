@@ -1,18 +1,206 @@
-- [[Private]]
-- [[이력서]]
-- [[Claude Code]]
-
-## [[TexTube/TexTube|TexTube]]
 TexTube는 YouTube 영상을 글로 옮기는 서비스야
 
-### 260106(화)
+## Todo: Features
+추가기능: 우선순위 순서로
+- [ ] [[언어]] 기능: 메뉴에 추가
+- [ ] 스킨 기능: 메뉴에 추가
+
+## Todo: MVP
+[[Backend/백엔드]]
+- [ ] `/posts` 에서 필요한 값만 출력하도록 엔드포인트 수정
+- [ ] Category를 직접 지정할지? 또는 임의로 생성하게 할지?
+- [ ] `isReady`가 작성 중일때는 `false`로, AI 응답이 끝났을 때에는 `true`
+
+## 클로드 한도로 찔끔 수정
+프론트엔드
+- [ ] 찔끔합시다
+
+### 프론트엔드
+Next Image 모듈 폐기: 게시글 상세
+`<Image />` 버리기
+`<img />`로 치환
+
+게시글 목록: PostCard
+사진을 16:9로 조정
+
+Medium에서는 위쪽에만 마진이 존재한다.
+Newneek에서는 위쪽의 마진이 더 넓고 아래쪽도 존재한다.
+Reader Mode에서는 위아래의 마진이 동일하다.
+
+### AI 문제들
+글 끊김
+```ts
+config: {
+  maxOutputTokens: 4096, // 넉넉하게
+  temperature: 0.7,
+}
+```
+
+프롬프트 수정
+```
+##, ###까지만 (#는 제목이므로)
+
+```
+
+
+에러처리
+- 자막이 존재하지 않습니다
+- AI 가 
+
+## 260107(수)
+### Commit
+- [x] `extractVideoId()` => `common/utils/youtube.js` 생성 후 옮김
+
+https://ui.shadcn.com/docs/components
+
+### 한도가 걸려서 건드리지 못할 때
+지금 커밋하려는 상황에서 Limit이 걸려서 건드리지를 못하겠어. 얘가 컨텍스트를 유지해서 자기가 수정한 내용만 알아서 커밋을 잘 할 수 있을까?
+흠 무섭군 무서워...
+
+shadcn/ui 도입
+- 이거 자동화하는 게 존재하나보네
+- Vercel v0.app
+
+백엔드 배포 성공
+
+Claude Code를 다시 사용하려면 1월 8일 5시까지 기다려야 해요
+내가 쓴 일주일치 용량만 Extra로 사용하면 요금이 얼마나 나갈까?
+이제 비용 효율화를 신경써야할 때가 왔다
+
+`/compact`
+
+업로드 만들어야 하고... 해야하는데 
+일단 isReady가 곧바로 안됨
+테스트를 너무 Claude Code에 의존함
+커밋 메시지를 Claude Code에 의존함
+DB 확인 등을 모두 Claude Code에 의존함
+
+커밋 메시지를 입력하게 해야해서 컨텍스트를 보존시켜야 하는데
+
+업로드 엔드포인트를 어떻게? 현재 feature 안에 있는데 
+domain 영역에 새로 만들어야 하나.
+
+### 데이터 수신
+JSON 데이터를 백엔드 엔드포인트에서 조절할까
+아니면 프론트엔드에서 잘라서 사용할까?
+백엔드에서 자르자.
+List를 출력할 때랑
+Detail을 출력할 때랑 전달하는 값을 다르게 하자.
+
+근데 검색 기능은 또 어떻게 해야할까?
+
+### Pro를 사용할까 Max를 사용해야할까?
+Max: 해봤자 한도는 5배밖에 안함
+그러니 비용 효율화를 꾀하는 수 밖에
+
+### Todo
+프론트엔드
+- [ ] 유튜브 사진을 16:9 사이즈로: 현재는 1:1
+- [ ] ui.shadcn에서 불러온 것들:
+    - [ ] 메뉴가 투명하다? 왜지
+    - [ ] 버튼
+
+백엔드
+- [ ] 일단 isReady가 곧바로 안됨
+- [ ] 테스트를 너무 Claude Code에 의존함
+- [ ] 커밋 메시지를 Claude Code에 의존함
+- [ ] DB 확인 등을 모두 Claude Code에 의존함
+
+## 260106(화)
+[[Frontend]]
+
+와 한번에 너무많이 하니까 머리가 터질 것 같다
+여기까지가 내 실력인가 보다
+핵심개념 Railway 환경변수
+
 - 구조 정리하기
 - package.json 필요없는 거 정리하기
 - !실패: youtube.js(InnerTube)로 바꾸기
     - InnerTube 분기화 legacy/new
-- Channel 마이그레이션이 안된 거 구현
+- 스키마 [[Prisma]]
+    - Channel 마이그레이션이 안된 거 구현
+    - 최종 스키마를 확정해야함
+        - Comment나 또다른 기능은 추후에 확장하기만 하면 되는데,
+        - Post, User 등은 새롭게 추가할 것이 아니라면 이제 최종 결정을 해야함.
+    - 직접 Dump하고 prisma를
+- [[배포]]: Railway
+
+아니 claude code가 구버전으로 착각하고 schema.prisma에다가 env를 넣는 거 같다.
+이 프리즈마가 내 시간의 50%를 잡아먹는 거 같다.
+
 
 ## 질문
+- [i] Health Check
+- [x] `railway.toml` 필수?
+- [ ] prisma studio가 무엇인가
+    - https://gemini.google.com/app/99a1c4bbf5d08575
+- [ ] 테스트 엔드포인트: 어떤 방식으로 테스트하는 게 좋은가?
+- [ ] 인가
+- [ ] 프로덕션 엔드포인트: 
+- [ ] 게시글 목록
+- [ ] 게시글 상세
+
+### 게시글 상세
+
+
+### [[게시글 목록]]
+아! 서비스는 서비스대로
+HTTP를 받는 건 **컨트롤러** 밖에 없구나
+
+페이지네이션
+무한 스크롤: 커서 사용
+
+기본: 최신순, 
+
+정렬 순서
+- 최신순
+- 인기순
+- 알고리즘
+
+카테고리: 전체
+태그: 
+최신순
+인기순
+
+
+### 프로덕션 엔드포인트
+세션 쿠키가 들어온다.
+인증: Guard
+인가: req.user
+데이터 바인딩
+### 인가... 
+일단 필요한 기능: 회원 탈퇴
+DELETE로 보내는 게 일반적인 CRUD 관점에서는 좋다는데
+정책이 있다고?? 아 나중에 생각해
+
+### 테스트 엔드포인트
+NestJS app.controller에다가
+테스트 엔드포인트를 다 때려박은 거 같은데 이따가 지워야 하나?
+그럼 어떤 방식...
+test/app.e2e-spec.ts로 옮기란다.
+- 테스트는 기본적으로: 엔드포인트 테스트와 단위 테스트로 나뉜다.
+
+### railway.toml
+이게 없으면: 
+- 언어 감지: `package.json`을 보고 Node.js 환경을 탐지
+- 빌드 명령어 추측: `build` 스크립트를 찾아서 실행
+- 실행 명령어 추측: `start` 스크립트를 찾아서 실행
+
+### Schema
+얘네는 왜 두개씩 만들어야하지?
+```prisma
+  channelId    String
+  channel      Channel    @relation(fields: [channelId], references: [id])
+
+  userId       Int
+  user         User       @relation(fields: [userId], references: [id])
+```
+
+Channel은 Prisma에서 사용하는 거다.
+
+### AI 용량이 모두 고갈될 때
+
+
 ### 각 에러처리를...
 어떤 부분에서 하면 좋을까?
 
@@ -453,6 +641,7 @@ Railway DB 사용하는 법
 
 제발
 
+- [[Claude Code]]
 
 
 
