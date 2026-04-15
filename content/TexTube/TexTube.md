@@ -1,7 +1,11 @@
 - [[백엔드 보안]] 
+- [[TexTube 개발]]
 
 TexTube는 YouTube 영상을 글로 옮기는 서비스야
 - [[개발 기록]]
+
+참조
+- [Eightify](https://eightify.app)
 
 ## Todo: Features
 추가기능: 우선순위 순서로
