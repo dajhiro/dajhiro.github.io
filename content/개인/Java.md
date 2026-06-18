@@ -1,50 +1,28 @@
-[[war]]
+- [[Java-HelloWorld]]
+- [[Tomcat]]: Java로 만들어진 Java Application Server
+
+### Java의 특징
+- 모든 객체는 참조(reference)로 다룬다.
+- GC, Garbage Collector: delete할 필요가 없음.
+	- 근데 그만큼 신경써야 성능을 올릴 수 있다.
+- 메모리 저장
+	- 모든 객체(object)는 heap에
+	- 원시(primitive)는 stack에
+- 상속 `class Dog extends Animal { }`
+	- 다중 상속 불가
+- 인터페이스
+	- `interface Runnable { void run(); }`
+	- `class Dog implements Runnable { public void run() { ... } }`
+- 접근제어자 명시
+- 참조: `import com.example.Dog;`(패키지)
+	- `package com.example;`
+- Exception: IOException은 명시해야함
+
+[[Java 객체]]
+
+### 다음:
+- [[Spring Boot]]
 
 ---
-DTI, Data Transfer Inteface
-자바에서 데이터를 주고받을 때 쓰는 규격
-
-
-DTO: Data Transfer Object
-- Data Set
-- Getter/Setter
-
-DTI: Data Transfer Interface
-
-VO: Value Object
-
----
-- Java와 Spring의 관계
-- Tomcat: Spring
-- WAS
-Web Application Server
-
-Java를 더 쉽고 강력하게 사용할 수 있도록
-
-복잡한 설정, 보안, 데이터베이스 연결 등
-
-
----
-Windows 환경
-- Powershell 또는 VS Code 상 Bash
-- Powershell에서 ssh 접속
-
-Linux 환경
-
-
-
-Jerry(Tomcat)
-
-JDK
-
-IDE?
-- IntelliJ IDEA, Eclipse, VS Code 등
-
-자바 돌리는 법
-```java
-public class Main {
-	public static void main(String[] args) {
-		System.out.println("Hello, Java!");
-	}
-}
-```
+### 재미
+- `void run();` ⇔ `void run() { }`

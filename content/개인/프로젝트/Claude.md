@@ -1,3 +1,5 @@
+GPT
+
 너 하나면 된다.
 GPT의 컨텍스트를 옮기기
 [ChatGPT에서 Claude로 대화 옮기기 - Claude](https://claude.ai/chat/4e644892-36e3-4f92-9748-b605f686ce9b)
@@ -6,6 +8,7 @@ ChatGPT ⇒ Claude 대화 목록 옮기는 법?
 
 그런 걸 도와주는 앱을 만들고 싶다.
 생성형AI 생태계를 옮기는 앱.
+이미 클로드는 가능하다.
 
 핵심은 "맥락 추가"
 
