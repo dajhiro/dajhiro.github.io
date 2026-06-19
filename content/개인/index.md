@@ -10,6 +10,7 @@
 
 ### 목차
 - [[Computer]]
+	- [[Utility]]
 	- [[Windows]]
 	- [[Encoding]]
 - [[프로젝트]]
