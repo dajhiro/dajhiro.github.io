@@ -1,5 +1,4 @@
 
----
 
 ### [[Terminal]]
 Ctrl+C와 Ctrl+V는 **Windows 콘솔 호스트(conhost.exe) 자체에 하드코딩된 특수 처리**가 있어요:
