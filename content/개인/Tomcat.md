@@ -18,9 +18,6 @@ HTML 코드에 자바 코드를 삽입해 동적으로 웹 페이지 생성
 
 
 ----
-DTI, Data Transfer Inteface
-자바에서 데이터를 주고받을 때 쓰는 규격
-
 
 DTO: Data Transfer Object
 - Data Set
