@@ -9,4 +9,5 @@ TypeORM         →   JPA
 
 NestJS와 거의 일대일 대응이다.
 
-[[Spring Boot - Hello World]]
+- [[Spring Boot - Hello World]]
+- [[Spring Batch]]
