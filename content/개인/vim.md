@@ -1,4 +1,12 @@
-vimrc
+vimrc 적용 명령어
+`:source %`
+
+Command Mode
+`%`는 현재 파일
+
+`set nu`
+  `set nonu`
+
 
 windows powershell vimrc 위치와 tab 크기 설정하기
 
