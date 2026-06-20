@@ -1,4 +1,0 @@
-- Mobile
-- Pad
-- Desktop
-- [[Web]]
