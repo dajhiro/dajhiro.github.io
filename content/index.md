@@ -21,6 +21,7 @@
 - `JavaScript`
 - `TypeScript`
 - `HTML` `CSS`
+- `JAVA` `Spring boot`
 
 ### 프레임워크
 - `Next.js/React`: TexTube
@@ -38,3 +39,4 @@
 - [[도구]]
 - [[Publish/문서]]
     - [[문서/Unity/Unity|My Unity Documents]]
+- [[개인]]
