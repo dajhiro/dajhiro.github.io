@@ -1,4 +1,5 @@
-static
+### static
+
 ```c
 void counter() {
 	static int count = 0;
