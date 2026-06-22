@@ -1,3 +1,7 @@
+이런 건 사용 가능?
+- [ ] 
+
+---
 클라이언트와 서버 간의 양방향 실시간 통신을 가능케 하는 프로토콜
 HTTP vs WebSocket
 
@@ -15,6 +19,7 @@ Connection: Upgrade
 Sec-WebSocket-Key: dGhlIHNhbXBsZSBub25jZQ==
 ```
 
+Upgrade가 핵심
 101 Switching Protocols ⇒ WebSocket 프로토콜로 통신
 
 ### 브라우저
@@ -42,7 +47,8 @@ export class EventsGateway {
 ```
 
 ---
-
+- 서버에서 데이터 발송 가능
+- 
 
 
 
