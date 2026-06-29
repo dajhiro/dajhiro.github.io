@@ -1,3 +1,10 @@
+### SAP 언어 종류
+[[ABAP]]
+Advanced Business Application Programming
+
+CDS Core 
+
+---
 # [[SAP]]: ERP 소프트웨어의 이름
 [[ERP]], Enterprise Resource Planning, 전사적 자원관리
 

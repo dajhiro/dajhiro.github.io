@@ -1,6 +1,7 @@
 - [[Java-HelloWorld]]
 - [[Tomcat]]: Java로 만들어진 Java Application Server
 
+
 ### Java의 특징
 - 모든 객체는 참조(reference)로 다룬다.
 - GC, Garbage Collector: delete할 필요가 없음.
@@ -27,3 +28,8 @@
 ---
 ### 재미
 - `void run();` ⇔ `void run() { }`
+
+---
+- WAS
+- 동적 데이터 처리
+- 자바[[../개인/Java]] 프로그램 - 서블릿 컨테이너
