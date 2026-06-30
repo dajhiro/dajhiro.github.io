@@ -33,7 +33,7 @@ list.getClass().getName(); // "java.util.ArrayList"
 ```
 
 그러나 Type Erasure는 Reflection에 의한 참조를 막는다.
-그래서 종종 트릭을 사요한다.
+그래서 종종 트릭을 사용한다.
 
 DI가 리플렉션으로 돌아간다
 

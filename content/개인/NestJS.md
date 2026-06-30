@@ -1,6 +1,6 @@
 ### vs [[Spring Boot]]
 장점
-- 생태계: Spring Data, Spring Security, [[Spring Batch]]
+- 생태계: [[Spring Data]], [[Spring Security]], [[Spring Batch]]
 	- 엔터프라이즈 요구사항에 대한 솔루션 이미 존재
 - 타입 안정성, 컴파일 타임 검증: Java/Kotlin 정적 타이핑 + Spring의 Annotation 기반 검증
 	- 런타임 오류를 컴파일 단계에서 많이 잡음
