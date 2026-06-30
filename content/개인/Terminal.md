@@ -2,6 +2,6 @@
 
 ---
 Windows Console Host
-Windows Terminal
+[[Windows Terminal]]
 
 웹 검색 기능
