@@ -1,4 +1,15 @@
-RPC, Remote Procedure Call
+# RPC, Remote Procedure Call
+생각보다 이미 엄청나게 익숙한 기능
+
+## REST API와의 차이는... 
+- RPC: 동작(procedure)를 노출
+	- 무슨 동작을 시킬지
+- REST: 자원(resource)를 노출
+	- 무엇을 할지(CRUD)
+
+
+
+---
 원격 함수 호출
 여러 서버를 가지고 있을 때, **서버의 함수**를 호출하는 것.
 예를 들어 

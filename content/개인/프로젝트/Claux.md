@@ -1,3 +1,53 @@
+## [[개발 프롬프트]]
+### 플랫폼
+- Chrome Extension
+- 개발불가
+
+기능
+- [[질문 접기]]
+
+## Manifest V3 제약 조건
+[[확장프로그램]]
+### 1. Service Worker
+- `chrome.storage`, `IndexedDB` 등의 영속 저장소를 반드시 사용해야 함
+- WebSocket 연결, 타이머 유지 등이 까다로워짐
+
+### 2. 네트워크 요청
+`declarativeNetRequest`
+동적으로 가로채고 수정하는 기능 이제 불가능
+정적으로 미리 선언한 규칙만 사용 가능
+
+```json
+{
+  "id": 1,
+  "action": { "type": "block" },
+  "condition": { "urlFilter": "ads.example.com" }
+}
+```
+
+### 3. 원격 코드 실행 불가능
+동적 JS코드 금지
+반드시 확장 프로그램
+
+### 5. Content Security Policy (CSP)
+
+
+### 6. Promise 기반 API
+
+
+
+---
+이름을 무엇으로 할까?
+
+---
+
+Obisdian
+- ⇒ Claude
+- ⇒ [[Chat]]: Telegram
+- ⇒ Web
+
+프라이버시 및 보안
+
 [Safari iOS 하단 주소창 사용성 지표 - Claude](https://claude.ai/chat/9c1a0cb2-9533-44b4-975e-e92981b3915e)
 핵심 기능
 - 접기 기능
