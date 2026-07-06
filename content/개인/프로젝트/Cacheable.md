@@ -1,4 +1,5 @@
 # REST API 캐싱
+[REST API 캐싱 전략 - Claude](https://claude.ai/chat/c98997f5-6827-4dc5-a7be-9735fb9d9934)
 반복적인 요청에 대한 응답을 저장, 재사용하여
 서버 부하를 줄이고 응답 속도를 높이는 기법
 
