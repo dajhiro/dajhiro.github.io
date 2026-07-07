@@ -1,5 +1,7 @@
+
 ## Quartz 5
 [[Quartz 5 — Migrating]]
+[[Quartz 5 — Hosting]]
 
 Plugin
 ```sh
