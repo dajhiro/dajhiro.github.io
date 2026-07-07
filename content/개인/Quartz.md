@@ -6,6 +6,7 @@ Plugin
 npx quartz plugin add github:quartz-community/explorer
 ```
 
+빌드
 
 ### 셋업
 ```powershell
