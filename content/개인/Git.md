@@ -1,3 +1,5 @@
+# Git
+- [[Git/커밋 탐색]]
 커밋 두개 합치기
 ```git
 git rebase -i --root

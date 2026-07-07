@@ -1,7 +1,7 @@
 # yaml-language-server: $schema=./quartz/plugins/quartz-plugins.schema.json
 configuration:
   pageTitle: Dajhiro
-  pageTitleSuffix: ""
+  pageTitleSuffix: "Dajhiro"
   enableSPA: true
   enablePopovers: true
   analytics:
@@ -17,7 +17,7 @@ configuration:
     cdnCaching: true
     typography:
       header: Schibsted Grotesk
-      body: Noto Serif KR
+      body: "Noto Serif KR"
       code: IBM Plex Mono
     colors:
       lightMode:
@@ -264,7 +264,7 @@ plugins:
       subdir: plugin
     enabled: true
     options:
-      theme: default
+      theme: minimal
   - source: github:quartz-community/obsidian-plugin-excalidraw
     enabled: true
     options:

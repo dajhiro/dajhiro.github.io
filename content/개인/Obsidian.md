@@ -1,4 +1,19 @@
-### `[[wikilink]]`를 객체로 다루는 법
+# Obsidian
+- [[Obsidian/Obsidian Plugins|Obsidian Plugins]]
+
+Settting
+```
+app
+appearance
+core-plugins
+graph
+workspace
+```
+
+
+
+## 기타
+### \[\[wikilink]]를 객체로 다루는 법
 링크를 파일 객체의 인터페이스로 본다.
 노트 내의 링크들을 이용해, 한꺼번에 이름을 바꾼다든지
 위치를 옮긴다던지...
