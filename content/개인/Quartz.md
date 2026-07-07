@@ -6,7 +6,17 @@ Plugin
 npx quartz plugin add github:quartz-community/explorer
 ```
 
-빌드
+바꾸고 싶다
+
+어떻게 사용하는데?
+
+
+%%hidden%%
+
+docker
+```sh
+docker run --rm -itp 8080:8080 -p 3001:3001 -v ./content:/usr/src/app/content $(docker build -q .)
+```
 
 ### 셋업
 ```powershell
