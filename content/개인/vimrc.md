@@ -1,3 +1,9 @@
+검색 하이라이트
+`set hlsearch` 
+
+
+
+## 문법
 ### set
 `set number`
 

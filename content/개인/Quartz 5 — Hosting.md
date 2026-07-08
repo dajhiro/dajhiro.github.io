@@ -1,3 +1,4 @@
+```yml
 name: Deploy Quartz site to GitHub Pages
  
 on:
@@ -59,3 +60,4 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+```

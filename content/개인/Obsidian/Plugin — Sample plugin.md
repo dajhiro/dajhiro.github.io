@@ -1,7 +1,7 @@
 # Sample Plugin
 ## 정보
 ### 링크
-GitHub: []()
+GitHub: []
 Guide:
 - [Build a plugin - Developer Documentation](https://docs.obsidian.md/Plugins/Getting+started/Build+a+plugin)
 - [Submit your plugin - Developer Documentation](https://docs.obsidian.md/Plugins/Releasing/Submit+your+plugin#Prerequisites)
@@ -42,9 +42,11 @@ npm run dev # 2. Compile the source code. And keeps running in the terminal and 
 import { Notice, Plugin } from 'obsidian';
 
 export default class MyHomepage extends Plugin {
-  this.addRibbonIcon('dice', 'Greet', () => {
-    new Notice('Hello, world!');
-  }); // Plugin.addRibbonIcon()
+  async onLoad() {
+    this.addRibbonIcon('dice', 'Greet', () => {
+      new Notice('Hello, world!');
+    }); // Plugin.addRibbonIcon()
+  }
 }
 ```
 

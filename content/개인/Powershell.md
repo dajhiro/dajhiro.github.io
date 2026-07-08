@@ -12,7 +12,12 @@
 Node
 
 ---
-설정
+### 소프트링크 Symbolic link
+```powershell
+New-Item -ItemType SymbolicLink -Path "<from>" -Value "<target>"
+```
+
+### 설정
 ### Alias
 
 ```powershell
