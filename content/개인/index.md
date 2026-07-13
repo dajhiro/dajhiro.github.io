@@ -3,17 +3,20 @@
 - [ ] 물티슈: 회사
 - [ ] 곽티슈: 집
 - [ ] 휴지: 집
+- [ ] 건전지: 집
 
 [[Todo/학교|학교]]
 - [ ] 독서대 가져오기
 - [ ] 책 빌리기
 
 ### 목차
+- [[개통]]
 - [[SAP]]
 - [[Quartz 5]]
 - [[Obsidian]]
 	- [[Obsidian/Obsidian Plugins]]
 - 생산성
+	- [[gvim]]
 	- [[Notion]]
 	- [[Obsidian]]
 	- [[Git]]
