@@ -14,21 +14,24 @@ Node
 ---
 ### 소프트링크 Symbolic link
 ```powershell
-New-Item -ItemType SymbolicLink -Path "<from>" -Value "<target>"
+New-Item -ItemType SymbolicLink \
+  -Path "from" \
+  -Value "target"
 ```
 
-### 설정
+## 설정
+```powershell
+vim $PROFILE # 편집
+. $PROFILE   # 적용
+```
+
 ### Alias
-
 ```powershell
-vim $PROFILE
-. $PROFILE
+Set-Alias vi vim
+Set-Alias open Start-Process
 ```
 
-```powershell
-Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
-```
-
+Emacs Keybound
 ```powershell
 Set-PSReadLineOption -EditMode Emacs
 ```
